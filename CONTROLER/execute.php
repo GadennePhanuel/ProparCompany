@@ -15,21 +15,10 @@ $myDateTime = new DateTime('20-05-1991');
 
 $worker = new Worker('jean', 'loulou', $myDateTime, '0688500712' , $myDateTime, 'expert', 'admin', 'admin');
 
-$dbi = Singleton::getInstance()->getConnection();
+$customer = new Customer('merlier', 'patrick', $myDateTime, "60 rue du tool", 'bailleul', 'merlierpat@gmail.com', '0691847461');
 
-$req = $dbi->prepare("INSERT INTO workers 
-    (name, firstname, birthday, phone, dateHiring, status, login, password)
-    VALUES
-    (:name, :firstname, :birthday, :phone, :dateHiring, :status, :login, :password)");
+$jobtype = new JobType('petite', 1000);
 
-$req->execute(array(
-    'name' => $worker->getName(),
-    'firstname' => $worker->getFirstname(),
-    'birthday' => $worker->getBirthday()->format('Y-m-d'),
-    'phone' => $worker->getPhone(),
-    'dateHiring' => $worker->getDateHiring()->format('Y-m-d'),
-    'status' => $worker->getStatus(),
-    'login' => $worker->getLogin(),
-    'password' => $worker->getPassword()
-));
+$commentary = "doit être fait avant le 30 de ce mois";
 
+DBManagement::addJob($customer, $commentary, 3);
