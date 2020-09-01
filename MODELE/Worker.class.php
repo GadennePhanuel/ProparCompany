@@ -3,14 +3,14 @@
 
 class Worker extends Person
 {
-    private $idWorker; //int
-    private $phone; //int
-    private $dateHiring; //object Date  -- date d'embauche
-    private $status; //string
-    private $login; //string
-    private $password; //string
+    private int $idWorker; //int
+    private string $phone; //int
+    private DateTime $dateHiring; //object Date  -- date d'embauche
+    private string $status; //string
+    private string $login; //string
+    private string $password; //string
 
-    public function __construct(string $name, string $firstname, DateTime $birthday, int $phone, DateTime $dateHiring, string $status, string $login, string $password)
+    public function __construct(string $name, string $firstname, DateTime $birthday, string $phone, DateTime $dateHiring, string $status, string $login, string $password)
     {
         parent::__construct($name, $firstname, $birthday);
         $this->phone = $phone;
@@ -39,31 +39,31 @@ class Worker extends Person
     /**
      * @return string
      */
-    public function getPhone(): int
+    public function getPhone(): string
     {
         return $this->phone;
     }
 
     /**
-     * @param int $phone
+     * @param string $phone
      */
-    public function setPhone(int $phone): void
+    public function setPhone(string $phone): void
     {
         $this->phone = $phone;
     }
 
     /**
-     * @return object
+     * @return DateTime
      */
-    public function getDateHiring(): object
+    public function getDateHiring(): DateTime
     {
         return $this->dateHiring;
     }
 
     /**
-     * @param object $dateHiring
+     * @param DateTime $dateHiring
      */
-    public function setDateHiring(object $dateHiring): void
+    public function setDateHiring(DateTime $dateHiring): void
     {
         $this->dateHiring = $dateHiring;
     }
@@ -115,6 +115,7 @@ class Worker extends Person
     {
         $this->password = $password;
     }
+
 
 
 }

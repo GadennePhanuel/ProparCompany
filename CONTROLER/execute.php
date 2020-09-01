@@ -13,7 +13,7 @@ require_once '../MODELE/Customer.class.php';
 
 $myDateTime = new DateTime('20-05-1991');
 
-$worker = new Worker('jean', 'loulou', $myDateTime, 6688500712 , $myDateTime, 'expert', 'admin', 'admin');
+$worker = new Worker('jean', 'loulou', $myDateTime, '0688500712' , $myDateTime, 'expert', 'admin', 'admin');
 
 $dbi = Singleton::getInstance()->getConnection();
 

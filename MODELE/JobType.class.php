@@ -3,11 +3,11 @@
 
 class JobType
 {
-    private $idJobType; //int auto-increment en bdd
-    private $nameType; //string
-    private $price; //float
+    private int $idJobType; //int auto-increment en bdd
+    private string $nameType; //string
+    private float $price; //float
 
-    public function __construct(String $name,Float $price)
+    public function __construct(String $name,float $price)
     {
         $this->nameType = $name;
         $this->price = $price;
@@ -46,7 +46,7 @@ class JobType
     }
 
     /**
-     * @return Float
+     * @return float
      */
     public function getPrice(): float
     {
@@ -54,7 +54,7 @@ class JobType
     }
 
     /**
-     * @param Float $price
+     * @param float $price
      */
     public function setPrice(float $price): void
     {

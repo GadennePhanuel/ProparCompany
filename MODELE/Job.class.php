@@ -3,15 +3,15 @@
 
 class Job
 {
-    private $idJob; //int  - autoincrement bdd
-    private $commentary; //string
-    private $dateInit; //date - de création du job
-    private $dateAttributed; //date  - d'attribution du job à un employé
-    private $dateEnd;  //date - de fin du job
-    private $status;  //string - status du job
-    private $idCustomer; //int
-    private $idWorker; //int
-    private $idJobType; //int
+    private int $idJob; //int  - autoincrement bdd
+    private string $commentary; //string
+    private DateTime $dateInit; //date - de création du job
+    private DateTime $dateAttributed; //date  - d'attribution du job à un employé
+    private DateTime $dateEnd;  //date - de fin du job
+    private string $status;  //string - status du job
+    private int $idCustomer; //int
+    private int $idWorker; //int
+    private int $idJobType; //int
 
     public function __construct(int $idCustomer,string $commentary, int $idJobType)
     {

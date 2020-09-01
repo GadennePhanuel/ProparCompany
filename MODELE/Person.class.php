@@ -3,11 +3,11 @@
 
 class Person
 {
-    protected $name; //sting
-    protected $firstname; //string
-    protected $birthday; //date
+    protected string $name; //sting
+    protected string $firstname; //string
+    protected DateTime $birthday; //date
 
-    public function __construct(String $name, String $firstname, object $birthday){
+    public function __construct(String $name, String $firstname, DateTime $birthday){
         $this->name = $name;
         $this->firstname = $firstname;
         $this->birthday = $birthday;
@@ -46,20 +46,22 @@ class Person
     }
 
     /**
-     * @return object
+     * @return DateTime
      */
-    public function getBirthday(): object
+    public function getBirthday(): DateTime
     {
         return $this->birthday;
     }
 
     /**
-     * @param object $birthday
+     * @param DateTime $birthday
      */
-    public function setBirthday(object $birthday): void
+    public function setBirthday(DateTime $birthday): void
     {
         $this->birthday = $birthday;
     }
+
+
 
 
 }
