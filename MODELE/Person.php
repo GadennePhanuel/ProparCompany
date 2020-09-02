@@ -1,13 +1,14 @@
 <?php
+namespace ProparCompany;
 
 
-class  Person
+abstract class  Person
 {
     protected $name; //sting
     protected  $firstname; //string
     protected  $birthday; //date
 
-    public function __construct(String $name, String $firstname, DateTime $birthday){
+    public function __construct(String $name, String $firstname, \DateTime $birthday){
         $this->name = $name;
         $this->firstname = $firstname;
         $this->birthday = $birthday;

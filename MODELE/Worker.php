@@ -1,4 +1,5 @@
 <?php
+namespace ProparCompany;
 
 
 class Worker extends Person
@@ -10,7 +11,7 @@ class Worker extends Person
     private  $login; //string
     private  $password; //string
 
-    public function __construct(string $name, string $firstname, DateTime $birthday, string $phone, DateTime $dateHiring, string $status, string $login, string $password, $id_worker = NULL )
+    public function __construct(string $name, string $firstname, \DateTime $birthday, string $phone, \DateTime $dateHiring, string $status, string $login, string $password, $id_worker = NULL )
     {
         parent::__construct($name, $firstname, $birthday);
         $this->phone = $phone;

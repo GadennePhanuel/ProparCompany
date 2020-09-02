@@ -1,4 +1,5 @@
 <?php
+namespace ProparCompany;
 
 
 /*
@@ -28,9 +29,9 @@ class Singleton {
     // Constructeur
     private function __construct() {
         try{
-            $this->_connection = new PDO('mysql:host='.$this->_host.';dbname='.$this->_dbname,
+            $this->_connection = new \PDO('mysql:host='.$this->_host.';dbname='.$this->_dbname,
                 $this->_username, $this->_password);
-        } catch (PdoException $e) {
+        } catch (\PdoException $e) {
             echo 'Error : '.$e->getMessage();
         }
     }

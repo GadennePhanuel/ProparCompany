@@ -1,4 +1,5 @@
 <?php
+namespace ProparCompany;
 
 
 class Job
@@ -15,12 +16,12 @@ class Job
 
     public function __construct()
     {
-        $this->dateInit = new DateTime($this->dateInit);
+        $this->dateInit = new \DateTime($this->dateInit);
         if ($this->dateAttributed != null){
-            $this->dateAttributed = new DateTime($this->dateAttributed);
+            $this->dateAttributed = new \DateTime($this->dateAttributed);
         }
         if ($this->dateEnd != null){
-            $this->dateEnd = new DateTime($this->dateEnd);
+            $this->dateEnd = new \DateTime($this->dateEnd);
         }
     }
 

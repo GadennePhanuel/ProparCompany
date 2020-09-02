@@ -1,0 +1,12 @@
+{
+    "name": "phanu/propar-company",
+    "type": "project",
+    "minimum-stability": "stable",
+    "autoload": {
+      "psr-4" : {
+        "ProparCompany\\" : "MODELE/"
+      }
+    },
+    "require": {}
+
+}

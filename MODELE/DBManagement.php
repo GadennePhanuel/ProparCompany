@@ -1,15 +1,16 @@
 <?php
+namespace ProparCompany;
 
 
 class DBManagement
 {
 
-    public static function createNewJobType(array $jobType): void
+    public static function createNewJobType(object $jobType): void
     {
         $dbi = Singleton::getInstance()->getConnection();
         $req = $dbi->prepare("INSERT INTO jobs_type (name, price) VALUES (:name, :price)");
         $req->execute(array(
-            'name' => iconv("UTF-8", "Windows-1252",$jobType->getNameType()),
+            'name' => $jobType->getNameType(),
             'price' => $jobType->getPrice()
         ));
     }
@@ -25,14 +26,14 @@ class DBManagement
                             (:name, :firstname, :birthday, :phone, :dateHiring, :status, :login, :password)");
 
         $req->execute(array(
-            'name' => iconv("UTF-8", "Windows-1252",$worker->getName()),
-            'firstname' => iconv("UTF-8", "Windows-1252",$worker->getFirstname()),
+            'name' => $worker->getName(),
+            'firstname' => $worker->getFirstname(),
             'birthday' => $worker->getBirthday()->format('Y-m-d'),
             'phone' => $worker->getPhone(),
             'dateHiring' => $worker->getDateHiring()->format('Y-m-d'),
-            'status' => iconv("UTF-8", "Windows-1252",$worker->getStatus()),
-            'login' => iconv("UTF-8", "Windows-1252",$worker->getLogin()),
-            'password' => iconv("UTF-8", "Windows-1252",$worker->getPassword())
+            'status' => $worker->getStatus(),
+            'login' => $worker->getLogin(),
+            'password' => $worker->getPassword()
         ));
     }
 
@@ -77,11 +78,11 @@ class DBManagement
 
 
         $req->execute(array(
-            'name' => iconv("UTF-8", "Windows-1252",$customer->getName()),
-            'firstname' => iconv("UTF-8", "Windows-1252",$customer->getFirstname()),
+            'name' => $customer->getName(),
+            'firstname' =>$customer->getFirstname(),
             'birthday' => $customer->getBirthday()->format('Y-m-d'),
-            'address' => iconv("UTF-8", "Windows-1252",$customer->getAddress()),
-            'city' => iconv("UTF-8", "Windows-1252",$customer->getCity()),
+            'address' => $customer->getAddress(),
+            'city' => $customer->getCity(),
             'email' => $customer->getEmail(),
             'phone' => $customer->getPhone()
         ));
@@ -109,7 +110,7 @@ class DBManagement
                             (:commentary, :id_jobType, :id_customer, :date_init, :status)");
 
         $req->execute(array(
-            'commentary' => iconv("UTF-8", "Windows-1252",$commentary),
+            'commentary' => $commentary,
             'id_jobType' => $idJobType,
             'id_customer' => $id_customer['id_customer'],
             'date_init' => $currentDate->format('Y-m-d'),

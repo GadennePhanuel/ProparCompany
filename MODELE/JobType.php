@@ -1,4 +1,5 @@
 <?php
+namespace ProparCompany;
 
 
 class JobType

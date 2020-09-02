@@ -1,5 +1,5 @@
 <?php
-
+namespace ProparCompany;
 
 class Customer extends Person
 {
@@ -9,7 +9,7 @@ class Customer extends Person
     private  $email; //string
     private  $phone; //int
 
-    public function __construct(string $name, string $firstname, DateTime $birthday, string $address, string $city, string $email, string $phone, $id_customer = NULL)
+    public function __construct(string $name, string $firstname, \DateTime $birthday, string $address, string $city, string $email, string $phone, $id_customer = NULL)
     {
         parent::__construct($name, $firstname, $birthday);
         $this->address = $address;
