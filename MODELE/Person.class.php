@@ -1,11 +1,11 @@
 <?php
 
 
-class Person
+class  Person
 {
-    protected string $name; //sting
-    protected string $firstname; //string
-    protected DateTime $birthday; //date
+    protected $name; //sting
+    protected  $firstname; //string
+    protected  $birthday; //date
 
     public function __construct(String $name, String $firstname, DateTime $birthday){
         $this->name = $name;

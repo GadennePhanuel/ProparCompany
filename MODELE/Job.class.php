@@ -3,22 +3,25 @@
 
 class Job
 {
-    private int $idJob; //int  - autoincrement bdd
-    private string $commentary; //string
-    private DateTime $dateInit; //date - de création du job
-    private DateTime $dateAttributed; //date  - d'attribution du job à un employé
-    private DateTime $dateEnd;  //date - de fin du job
-    private string $status;  //string - status du job
-    private int $idCustomer; //int
-    private int $idWorker; //int
-    private int $idJobType; //int
+    private $id_job ; //int  - autoincrement bdd
+    private  $commentary; //string
+    private  $dateInit; //date - de création du job
+    private  $dateAttributed; //date  - d'attribution du job à un employé
+    private  $dateEnd;  //date - de fin du job
+    private  $status;  //string - status du job
+    private  $id_customer ; //int
+    private  $id_worker ; //int
+    private  $id_jobType ; //int
 
-    public function __construct(int $idCustomer,string $commentary, int $idJobType)
+    public function __construct()
     {
-        $this->commentary = $commentary;
-        $this->idCustomer = $idCustomer;
-        $this->idJobType = $idJobType;
-        $this->status = 'init';
+        $this->dateInit = new DateTime($this->dateInit);
+        if ($this->dateAttributed != null){
+            $this->dateAttributed = new DateTime($this->dateAttributed);
+        }
+        if ($this->dateEnd != null){
+            $this->dateEnd = new DateTime($this->dateEnd);
+        }
     }
 
     /**
@@ -26,16 +29,18 @@ class Job
      */
     public function getIdJob()
     {
-        return $this->idJob;
+        return $this->id_job;
     }
 
     /**
-     * @param mixed $idJob
+     * @param mixed $id_job
      */
-    public function setIdJob($idJob): void
+    public function setIdJob($id_job): void
     {
-        $this->idJob = $idJob;
+        $this->id_job = $id_job;
     }
+
+
 
     /**
      * @return string
@@ -118,19 +123,19 @@ class Job
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getIdCustomer(): int
+    public function getIdCustomer()
     {
-        return $this->idCustomer;
+        return $this->id_customer;
     }
 
     /**
-     * @param int $idCustomer
+     * @param mixed $id_customer
      */
-    public function setIdCustomer(int $idCustomer): void
+    public function setIdCustomer($id_customer): void
     {
-        $this->idCustomer = $idCustomer;
+        $this->id_customer = $id_customer;
     }
 
     /**
@@ -138,32 +143,33 @@ class Job
      */
     public function getIdWorker()
     {
-        return $this->idWorker;
+        return $this->id_worker;
     }
 
     /**
-     * @param mixed $idWorker
+     * @param mixed $id_worker
      */
-    public function setIdWorker($idWorker): void
+    public function setIdWorker($id_worker): void
     {
-        $this->idWorker = $idWorker;
+        $this->id_worker = $id_worker;
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getIdJobType(): int
+    public function getIdJobType()
     {
-        return $this->idJobType;
+        return $this->id_jobType;
     }
 
     /**
-     * @param int $idJobType
+     * @param mixed $id_jobType
      */
-    public function setIdJobType(int $idJobType): void
+    public function setIdJobType($id_jobType): void
     {
-        $this->idJobType = $idJobType;
+        $this->id_jobType = $id_jobType;
     }
+
 
 
 }

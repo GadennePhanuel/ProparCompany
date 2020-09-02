@@ -3,14 +3,13 @@
 
 class JobType
 {
-    private int $idJobType; //int auto-increment en bdd
-    private string $nameType; //string
-    private float $price; //float
+    private  $id_jobType ; //int auto-increment en bdd
+    private  $name; //string
+    private  $price; //float
 
-    public function __construct(String $name,float $price)
+    public function __construct()
     {
-        $this->nameType = $name;
-        $this->price = $price;
+
     }
 
     /**
@@ -18,31 +17,33 @@ class JobType
      */
     public function getIdJobType()
     {
-        return $this->idJobType;
+        return $this->id_jobType;
     }
 
     /**
-     * @param mixed $idJobType
+     * @param mixed $id_jobType
      */
-    public function setIdJobType($idJobType): void
+    public function setIdJobType($id_jobType): void
     {
-        $this->idJobType = $idJobType;
+        $this->id_jobType = $id_jobType;
     }
+
+
 
     /**
      * @return String
      */
-    public function getNameType(): string
+    public function getName(): string
     {
-        return $this->nameType;
+        return $this->name;
     }
 
     /**
-     * @param String $nameType
+     * @param String $name
      */
-    public function setNameType(string $nameType): void
+    public function setName(string $name): void
     {
-        $this->nameType = $nameType;
+        $this->name = $name;
     }
 
     /**

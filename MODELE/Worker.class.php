@@ -3,14 +3,14 @@
 
 class Worker extends Person
 {
-    private int $idWorker; //int
-    private string $phone; //int
-    private DateTime $dateHiring; //object Date  -- date d'embauche
-    private string $status; //string
-    private string $login; //string
-    private string $password; //string
+    private  $id_worker ; //int
+    private  $phone; //int
+    private  $dateHiring; //object Date  -- date d'embauche
+    private  $status; //string
+    private  $login; //string
+    private  $password; //string
 
-    public function __construct(string $name, string $firstname, DateTime $birthday, string $phone, DateTime $dateHiring, string $status, string $login, string $password)
+    public function __construct(string $name, string $firstname, DateTime $birthday, string $phone, DateTime $dateHiring, string $status, string $login, string $password, $id_worker = NULL )
     {
         parent::__construct($name, $firstname, $birthday);
         $this->phone = $phone;
@@ -25,15 +25,15 @@ class Worker extends Person
      */
     public function getIdWorker()
     {
-        return $this->idWorker;
+        return $this->id_worker ;
     }
 
     /**
-     * @param mixed $idWorker
+     * @param mixed id_worker
      */
-    public function setIdWorker($idWorker): void
+    public function setIdWorker($id_worker ): void
     {
-        $this->idWorker = $idWorker;
+        $this->id_worker  = $id_worker ;
     }
 
     /**

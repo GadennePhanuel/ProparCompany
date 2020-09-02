@@ -3,19 +3,20 @@
 
 class Customer extends Person
 {
-    private int $idCustomer; //int
-    private string $address; //string
-    private string $city; //string
-    private string $email; //string
-    private string $phone; //int
+    private  $id_customer ; //int
+    private  $address; //string
+    private  $city; //string
+    private  $email; //string
+    private  $phone; //int
 
-    public function __construct(string $name, string $firstname, DateTime $birthday, string $address, string $city, string $email, string $phone)
+    public function __construct(string $name, string $firstname, DateTime $birthday, string $address, string $city, string $email, string $phone, $id_customer = NULL)
     {
         parent::__construct($name, $firstname, $birthday);
         $this->address = $address;
         $this->city = $city;
         $this->email = $email;
         $this->phone = $phone;
+        $this->id_customer = NULL;
     }
 
     /**
@@ -23,15 +24,15 @@ class Customer extends Person
      */
     public function getIdCustomer()
     {
-        return $this->idCustomer;
+        return $this->id_customer ;
     }
 
     /**
-     * @param mixed $idCustomer
+     * @param mixed $id_customer
      */
-    public function setIdCustomer($idCustomer): void
+    public function setIdCustomer($id_customer ): void
     {
-        $this->idCustomer = $idCustomer;
+        $this->id_customer  = $id_customer ;
     }
 
     /**
