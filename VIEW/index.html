@@ -21,7 +21,7 @@
                     <h1 id="my-hour"></h1>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
-                    <button type="button" class="btn btn-warning btn-rounded">Log In</button>
+                    <button type="button" class="btn btn-warning btn-rounded"><a href="#modalLogin" class="js-modal">Log In</a></button>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
             <button type="button" class="buttonJob buttonUnassignedJob"><h4>Unassigned Jobs</h4><p id="jobUnassigned"></p></button>
         </div>
 
-        <div id="divtableUnassignedJob">
+        <div id="divTableUnassignedJob">
             <table class="table" id="tableUnassignedJob">
                 <thead class=" thead-dark">
                     <tr>
@@ -54,7 +54,7 @@
             </table>
         </div>
 
-        <div id="divtableCurrentJob">
+        <div id="divTableCurrentJob">
             <table class="table" id="tableCurrentJob">
                 <thead class=" thead-dark">
                 <tr>
@@ -73,7 +73,7 @@
             </table>
         </div>
 
-        <div id="divtableEndJob">
+        <div id="divTableEndJob">
             <table class="table" id="tableEndJob">
                 <thead class=" thead-dark">
                 <tr>
@@ -94,12 +94,19 @@
             </table>
         </div>
 
-
-
-
-
-
+        <div id="modalLogin" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="title_modal" style="display:none">
+            <div class="modal-wrapper js-modal-stop">
+                <form action="#" class="login">
+                    <label for="login">Login</label>
+                    <input type="text" name="login" id="login" placeholder="your login">
+                    <label for="password">Password</label>
+                    <input type="text" name="password" id="password" placeholder="your password">
+                    <button type="submit" class="btn btn-primary js-modal-close">Connect !</button>
+                </form>
+            </div>
+        </div>
     </div>
+
 
 
 </body>
@@ -107,6 +114,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+<script src="js/modal.js"></script>
 <script src="js/main.js"></script>
 
 

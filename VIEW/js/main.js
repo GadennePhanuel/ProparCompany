@@ -16,8 +16,8 @@ function getTime () {
 }
 getTime();
 
-$('#tableUnassignedJob').hide();
-$('#tableEndJob').hide();
+$('#divTableUnassignedJob').hide();
+$('#divTableEndJob').hide();
 
 /**
  * call AJAX au chargement pour mettre à jours les totaux des jobs dans les  buttons et crée tous les tableaux
@@ -33,9 +33,6 @@ $.ajax({
         $('#jobEnd').text(response[2].length);
         $('#jobCurrent').text(response[1].length);
         $('#jobUnassigned').text(response[0].length);
-
-        console.log(response[0][0].id_job)
-
 
         //création des 3 tableaux
         response[0].forEach(function (element){
@@ -119,20 +116,18 @@ $.ajax({
 
         //ajout du dataTable (champs de recherche)
         $(document).ready(function () {
-            $('#tableUnassignedJob').DataTable({
-                "paging":   false,
-                "ordering": false,
-                "info":     false
-            });
+            $('#tableCurrentJob').DataTable();
+            $('.dataTables_length').addClass('bs-select');
         });
         $(document).ready(function () {
-            $('#tableCurrentJob').DataTable();
+            $('#tableUnassignedJob').DataTable();
             $('.dataTables_length').addClass('bs-select');
         });
         $(document).ready(function () {
             $('#tableEndJob').DataTable();
             $('.dataTables_length').addClass('bs-select');
         });
+
     },
     error:function(response){
         console.log('error');
@@ -152,20 +147,59 @@ $('.buttonJob').click(function (e){
 
 
 /*
-hide and show des tables en fonction du click sur button
+hide and show des div contenant les tables en fonction du click sur button
  */
 $('.buttonCurrentJob').click(function (e){
-    $('#divtableUnassignedJob').hide()
-    $('#divtableEndJob').hide()
-    $('#divtableCurrentJob').show()
+    $('#divTableUnassignedJob').hide()
+    $('#divTableEndJob').hide()
+    $('#divTableCurrentJob').show()
 })
 $('.buttonUnassignedJob').click(function (e){
-    $('#tableEndJob').hide()
-    $('#tableCurrentJob').hide()
-    $('#tableUnassignedJob').show()
+    $('#divTableEndJob').hide()
+    $('#divTableCurrentJob').hide()
+    $('#divTableUnassignedJob').show()
 })
 $('.buttonEndJob').click(function (e){
-    $('#tableCurrentJob').hide()
-    $('#tableUnassignedJob').hide()
-    $('#tableEndJob').show()
+    $('#divTableCurrentJob').hide()
+    $('#divTableUnassignedJob').hide()
+    $('#divTableEndJob').show()
 })
+
+
+/*
+Gestion du bouton LogIn pour appeller une fenêtre modale
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
