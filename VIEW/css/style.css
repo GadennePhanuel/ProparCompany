@@ -59,7 +59,7 @@ button pour choisir affichage des tableau de jobs
  */
 .jobsDisplayButton{
     margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: space-evenly;
 }
@@ -90,6 +90,21 @@ button pour choisir affichage des tableau de jobs
     color: #3751FF;
     border-color: #3751FF;
 }
+
+/*
+style input de recherche du datatable
+ */
+table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled{
+    background-position: center left;
+}
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px 20px;
+}
+.dataTables_filter input{
+    border-radius: 5px;
+}
+
+
 
 /*
 Css général des boites modales

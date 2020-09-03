@@ -167,10 +167,27 @@ $('.buttonEndJob').click(function (e){
 
 
 /*
-Gestion du bouton LogIn pour appeller une fenêtre modale
+gestion de l'appel AJAX lors de la demande de connection
  */
+$('#connect').click(function (e){
+    e.preventDefault();
+    $.ajax({
+        url: '../CONTROLER/login.action.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            login : $("#login").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à login.action.php
+            password : $("#password").val()
+        },
+        success: function (response){
+            
 
 
+
+
+        }
+    })
+})
 
 
 
