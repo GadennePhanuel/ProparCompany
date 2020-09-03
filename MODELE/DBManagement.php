@@ -43,7 +43,7 @@ class DBManagement
 
         $req = $dbi->prepare("UPDATE workers 
                                         SET
-                                        (status = :status)
+                                        status = :status
                                         WHERE 
                                         name = :name AND login = :login
                                         ");
@@ -92,7 +92,7 @@ class DBManagement
     {
         date_default_timezone_set('Europe/Paris');
         $date = date('d-m-Y');
-        $currentDate = new DateTime($date);
+        $currentDate = new \DateTime($date);
 
         $dbi = Singleton::getInstance()->getConnection();
 
@@ -101,7 +101,7 @@ class DBManagement
             'name' => $customer->getName(),
             'email' => $customer->getEmail()
         ]);
-        $id_customer = $id_customer->fetch(PDO::FETCH_ASSOC);
+        $id_customer = $id_customer->fetch(\PDO::FETCH_ASSOC);
 
 
         $req = $dbi->prepare("INSERT INTO jobs
@@ -126,16 +126,17 @@ class DBManagement
 
         date_default_timezone_set('Europe/Paris');
         $date = date('d-m-Y');
-        $currentDate = new DateTime($date);
+        $currentDate = new \DateTime($date);
 
         $req = $dbi->prepare("UPDATE jobs
                             SET 
-                            (id_worker = :id_worker, date_attributed = :date_attributed)
+                            id_worker = :id_worker, date_attributed = :date_attributed, status = :status
                             WHERE
-                            (id_job = :id_job)
+                            id_job = :id_job
                             ");
 
         $req->execute(array(
+            'status' => 'attributed',
             'id_job' => $job->getIdJob(),
             'id_worker' => $id_worker,
             'date_attributed' => $currentDate->format('Y-m-d'),
@@ -146,16 +147,17 @@ class DBManagement
     {
         $dbi = Singleton::getInstance()->getConnection();
 
-        $jobsList = $dbi->prepare("SELECT jobs.id_job,  jobs_type.name, jobs.date_init, customers.name, customers.firstname, jobs.commentary
+        $jobsList = $dbi->prepare("SELECT jobs.id_job,  jobs_type.name as nameType, jobs.date_init, customers.name, customers.firstname, jobs.commentary
                                             FROM jobs
                                             INNER JOIN customers ON jobs.id_customer = customers.id_customer
                                             INNER JOIN jobs_type ON jobs_type.id_jobType = jobs.id_jobType
                                             WHERE jobs.status = 'init'
+                                            ORDER BY jobs.date_init
                                             ");
 
         $jobsList->execute();
 
-        $jobsList = $jobsList->fetchAll(PDO::FETCH_ASSOC);
+        $jobsList = $jobsList->fetchAll(\PDO::FETCH_ASSOC);
 
         return $jobsList;
     }
@@ -164,16 +166,18 @@ class DBManagement
     {
         $dbi = Singleton::getInstance()->getConnection();
 
-        $jobsList = $dbi->prepare("SELECT jobs.id_job,  jobs_type.name, jobs.date_init, customers.name, customers.firstname, jobs.commentary
+        $jobsList = $dbi->prepare("SELECT jobs.id_job,  jobs_type.name as nameType, jobs.date_init, jobs.date_attributed ,customers.name, customers.firstname, jobs.commentary, workers.name as nameWorker, workers.firstname as firstnameWorker
                                             FROM jobs
                                             INNER JOIN customers ON jobs.id_customer = customers.id_customer
                                             INNER JOIN jobs_type ON jobs_type.id_jobType = jobs.id_jobType
+                                            INNER JOIN workers ON jobs.id_worker = workers.id_worker
                                             WHERE jobs.status = 'attributed'
+                                            ORDER BY jobs.date_init
                                             ");
 
         $jobsList->execute();
 
-        $jobsList = $jobsList->fetchAll(PDO::FETCH_ASSOC);
+        $jobsList = $jobsList->fetchAll(\PDO::FETCH_ASSOC);
 
         return $jobsList;
     }
@@ -182,16 +186,18 @@ class DBManagement
     {
         $dbi = Singleton::getInstance()->getConnection();
 
-        $jobsList = $dbi->prepare("SELECT jobs.id_job,  jobs_type.name, jobs.date_init, customers.name, customers.firstname, jobs.commentary
+        $jobsList = $dbi->prepare("SELECT jobs.id_job,  jobs_type.name as nameType, jobs.date_init, jobs.date_attributed, jobs.date_end, jobs.date_end, customers.name, customers.firstname, jobs.commentary, workers.name as nameWorker, workers.firstname as firstnameWorker
                                             FROM jobs
                                             INNER JOIN customers ON jobs.id_customer = customers.id_customer
                                             INNER JOIN jobs_type ON jobs_type.id_jobType = jobs.id_jobType
+                                            INNER JOIN workers ON jobs.id_worker = workers.id_worker
                                             WHERE jobs.status = 'finish'
+                                            ORDER BY jobs.date_init
                                             ");
 
         $jobsList->execute();
 
-        $jobsList = $jobsList->fetchAll(PDO::FETCH_ASSOC);
+        $jobsList = $jobsList->fetchAll(\PDO::FETCH_ASSOC);
 
         return $jobsList;
     }

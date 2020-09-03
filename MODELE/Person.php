@@ -47,17 +47,17 @@ abstract class  Person
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function getBirthday(): DateTime
+    public function getBirthday(): \DateTime
     {
         return $this->birthday;
     }
 
     /**
-     * @param DateTime $birthday
+     * @param \DateTime $birthday
      */
-    public function setBirthday(DateTime $birthday): void
+    public function setBirthday(\DateTime $birthday): void
     {
         $this->birthday = $birthday;
     }
