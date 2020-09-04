@@ -8,9 +8,10 @@ class JobType
     private  $name; //string
     private  $price; //float
 
-    public function __construct()
+    public function __construct(string $name, float $price)
     {
-
+        $this->name = $name;
+        $this->price = $price;
     }
 
     /**

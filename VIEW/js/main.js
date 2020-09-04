@@ -16,6 +16,8 @@ function getTime () {
 }
 getTime();
 
+
+//on cache par défaut les div suivantes, on veut qu'on chargement de la page on soit focus sur les currentJobs
 $('#divTableUnassignedJob').hide();
 $('#divTableEndJob').hide();
 
@@ -164,6 +166,8 @@ $('.buttonEndJob').click(function (e){
     $('#divTableUnassignedJob').hide()
     $('#divTableEndJob').show()
 })
+
+
 /*
 appel ajax simplement pour vérifier si il y a déja un session de conection en cours ou pas (au quel cas on modifie le button Log In en Log Out
  */
@@ -190,8 +194,6 @@ $.ajax({
 })
 
 
-
-
 /*
 gestion de l'appel AJAX lors de la demande de connection
  */
@@ -199,7 +201,9 @@ $('#connect').click(function (e){
     e.preventDefault();
     $('#errorLogin').text('');
     $('#errorPassword').text('');
-    $.ajax({
+    console.log($("#login").val()),
+
+        $.ajax({
         url: '../CONTROLER/login.action.php',
         type: 'POST',
         dataType: 'json',
@@ -248,6 +252,9 @@ $('#linkLogin').click(function (e){
                 $('#linkLogin').attr('href', '#modalLogin');
                 $('#linkLogin').addClass('js-modal')
                 $('#linkLogin').text('Log In');
+            }
+            if (window.location.href != "http://localhost/ProparCompany/VIEW/index.php"){
+                window.location.href = 'index.php';
             }
         },
     })

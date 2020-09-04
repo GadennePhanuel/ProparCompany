@@ -16,7 +16,7 @@ session_start();
 <body>
 
     <header class="blog-header py-3 bg-dark static-top">
-        <div class="container">
+        <div class="container-xl">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4 pt-1">
                     <h1>Welcome on ProparCompany</h1>
@@ -34,7 +34,7 @@ session_start();
     <div class="banner">
     </div>
 
-    <div class="container">
+    <div class="container-xl">
         <div class="jobsDisplayButton">
             <button type="button" class="buttonJob buttonEndJob"><h4>Jobs completed</h4><p id="jobEnd"></p></button>
             <button type="button" class="buttonJob active buttonCurrentJob"><h4>Current Jobs</h4><p id="jobCurrent"></p></button>
@@ -45,11 +45,11 @@ session_start();
             <table class="table" id="tableUnassignedJob">
                 <thead class=" thead-dark">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Init Date</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">type</th>
-                        <th scope="col">Commentary</th>
+                        <th class="columnID" scope="col">#</th>
+                        <th class="columnDate" scope="col">Init Date</th>
+                        <th class="columnCustomer" scope="col">Customer</th>
+                        <th class="columnType" scope="col">type</th>
+                        <th class="columnCommentary" scope="col">Commentary</th>
                     </tr>
                 </thead>
                 <tbody id="tBodyTableUnassignedJob">
@@ -62,13 +62,13 @@ session_start();
             <table class="table" id="tableCurrentJob">
                 <thead class=" thead-dark">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Init Date</th>
-                    <th scope="col">Assignment Date</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">type</th>
-                    <th scope="col">Commentary</th>
-                    <th scope="col">Worker</th>
+                    <th class="columnID" scope="col">#</th>
+                    <th class="columnDate" scope="col">Init Date</th>
+                    <th class="columnDate" scope="col">Assignment Date</th>
+                    <th class="columnCustomer" scope="col">Customer</th>
+                    <th class="columnType" scope="col">type</th>
+                    <th class="columnCommentary" scope="col">Commentary</th>
+                    <th class="columnCustomer" scope="col">Worker</th>
                 </tr>
                 </thead>
                 <tbody id="tBodyTableCurrentJob">
@@ -81,14 +81,14 @@ session_start();
             <table class="table" id="tableEndJob">
                 <thead class=" thead-dark">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Init Date</th>
-                    <th scope="col">Assignment Date</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">type</th>
-                    <th scope="col">Commentary</th>
-                    <th scope="col">Worker</th>
-                    <th scope="col">Date End</th>
+                    <th class="columnID" scope="col">#</th>
+                    <th class="columnDate" scope="col">Init Date</th>
+                    <th class="columnDate" scope="col">Assignment Date</th>
+                    <th class="columnCustomer" scope="col">Customer</th>
+                    <th class="columnType" scope="col">type</th>
+                    <th class="columnCommentary" scope="col">Commentary</th>
+                    <th class="columnCustomer" scope="col">Worker</th>
+                    <th class="columnDate" scope="col">Date End</th>
 
                 </tr>
                 </thead>
@@ -106,7 +106,7 @@ session_start();
                     <input type="text" name="login" id="login" placeholder="your login">
                     <p id="errorLogin"></p>
                     <label for="password">Password</label>
-                    <input type="text" name="password" id="password" placeholder="your password">
+                    <input type="password" name="password" id="password" placeholder="your password">
                     <p id="errorPassword"></p>
                     <button type="submit" class="btn btn-primary " id="connect">Connect !</button>
                 </form>

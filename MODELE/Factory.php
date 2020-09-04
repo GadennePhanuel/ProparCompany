@@ -13,9 +13,9 @@ class Factory
         return new Worker($name, $firstname,  $birthday, $phone, $dateHiring, $status,  $login, $password, $id_worker );
     }
 
-    public static function getNewTypeJob()
+    public static function getNewTypeJob(string $name, float $price)
     {
-        return new JobType();
+        return new JobType($name, $price);
     }
 
     public static function getJob()

@@ -54,17 +54,17 @@ class Worker extends Person
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
-    public function getDateHiring(): DateTime
+    public function getDateHiring(): \DateTime
     {
         return $this->dateHiring;
     }
 
     /**
-     * @param DateTime $dateHiring
+     * @param \DateTime $dateHiring
      */
-    public function setDateHiring(DateTime $dateHiring): void
+    public function setDateHiring(\DateTime $dateHiring): void
     {
         $this->dateHiring = $dateHiring;
     }

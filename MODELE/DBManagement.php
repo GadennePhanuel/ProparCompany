@@ -10,7 +10,7 @@ class DBManagement
         $dbi = Singleton::getInstance()->getConnection();
         $req = $dbi->prepare("INSERT INTO jobs_type (name, price) VALUES (:name, :price)");
         $req->execute(array(
-            'name' => $jobType->getNameType(),
+            'name' => $jobType->getName(),
             'price' => $jobType->getPrice()
         ));
     }
@@ -26,12 +26,12 @@ class DBManagement
                             (:name, :firstname, :birthday, :phone, :dateHiring, :status, :login, :password)");
 
         $req->execute(array(
-            'name' => $worker->getName(),
-            'firstname' => $worker->getFirstname(),
+            'name' =>$worker->getName(),
+            'firstname' =>$worker->getFirstname(),
             'birthday' => $worker->getBirthday()->format('Y-m-d'),
             'phone' => $worker->getPhone(),
             'dateHiring' => $worker->getDateHiring()->format('Y-m-d'),
-            'status' => $worker->getStatus(),
+            'status' =>$worker->getStatus(),
             'login' => $worker->getLogin(),
             'password' => $worker->getPassword()
         ));
@@ -49,7 +49,7 @@ class DBManagement
                                         ");
         $req->execute(array(
             'name' => $worker->getName(),
-            'login' => $worker->getLogin(),
+            'login' =>$worker->getLogin(),
             'status' => $status
         ));
     }
@@ -63,8 +63,8 @@ class DBManagement
                                         name = :name AND login = :login
                                         ");
         $req->execute(array(
-            'name' => $worker->getName(),
-            'login' => $worker->getLogin(),
+            'name' =>$worker->getName(),
+            'login' =>$worker->getLogin(),
         ));
     }
 
@@ -81,7 +81,7 @@ class DBManagement
             'name' => $customer->getName(),
             'firstname' =>$customer->getFirstname(),
             'birthday' => $customer->getBirthday()->format('Y-m-d'),
-            'address' => $customer->getAddress(),
+            'address' =>$customer->getAddress(),
             'city' => $customer->getCity(),
             'email' => $customer->getEmail(),
             'phone' => $customer->getPhone()
@@ -98,7 +98,7 @@ class DBManagement
 
         $id_customer = $dbi->prepare("SELECT id_customer FROM customers WHERE name = :name AND email = :email");
         $id_customer->execute([
-            'name' => $customer->getName(),
+            'name' =>$customer->getName(),
             'email' => $customer->getEmail()
         ]);
         $id_customer = $id_customer->fetch(\PDO::FETCH_ASSOC);
