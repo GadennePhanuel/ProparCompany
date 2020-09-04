@@ -31,21 +31,21 @@ use ProparCompany\Customer;
 $date1 = new DateTime('20-03-1995');
 $date2 = new DateTime('01-01-2020');
 
-$login1 ="théo";
-$password1 = password_hash("blin", PASSWORD_DEFAULT);
-$login2 = "manu";
-$password2 = password_hash("tchao", PASSWORD_DEFAULT);
-$login3 = "phanu";
-$password3 = password_hash("gadenne", PASSWORD_DEFAULT);
-
-
-$worker1 = Factory::getWorker('théo', 'blin', $date1, '0612121212', $date2, 'expert', $login1, $password1);
-$worker2 = Factory::getWorker('Manû', 'tchaô', $date1, '0612121212', $date2, 'sénior', $login2, $password2);
-$worker3 = Factory::getWorker('Phanu', 'gaden', $date1, '0612121212', $date2, 'apprenti', $login3, $password3);
-
-DBManagement::createWorker($worker1);
-DBManagement::createWorker($worker2);
-DBManagement::createWorker($worker3);
+//$login1 ="théo";
+//$password1 = password_hash("blin", PASSWORD_DEFAULT);
+//$login2 = "manu";
+//$password2 = password_hash("tchao", PASSWORD_DEFAULT);
+//$login3 = "phanu";
+//$password3 = password_hash("gadenne", PASSWORD_DEFAULT);
+//
+//
+//$worker1 = Factory::getWorker('théo', 'blin', $date1, '0612121212', $date2, 'expert', $login1, $password1);
+//$worker2 = Factory::getWorker('Manû', 'tchaô', $date1, '0612121212', $date2, 'sénior', $login2, $password2);
+//$worker3 = Factory::getWorker('Phanu', 'gaden', $date1, '0612121212', $date2, 'apprenti', $login3, $password3);
+//
+//DBManagement::createWorker($worker1);
+//DBManagement::createWorker($worker2);
+//DBManagement::createWorker($worker3);
 
 //$customer1 = Factory::getCustomer('vigin', 'marie', $date1, '24 rue du tool', 'roubaix' , 'marei@gmail.com', '0312121212');
 //$customer2 = Factory::getCustomer('bobo', 'ebeb', $date1, '74 rue du tool', 'roubaix' , 'ebeb@gmail.com', '010101010101');

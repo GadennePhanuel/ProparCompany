@@ -19,7 +19,7 @@ session_start();
     <div class="container">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
-                <h1>Welcome on ProparCompany</h1>
+                <h1>ProparCompany Options</h1>
             </div>
             <div class="col-4 text-center">
                 <h1 id="my-hour"></h1>

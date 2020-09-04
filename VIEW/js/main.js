@@ -253,7 +253,7 @@ $('#linkLogin').click(function (e){
                 $('#linkLogin').addClass('js-modal')
                 $('#linkLogin').text('Log In');
             }
-            if (window.location.href != "http://localhost/ProparCompany/VIEW/index.php"){
+            if (window.location.href != "http://localhost/ProparCompany/VIEW/index.php" && window.location.href != "http://localhost/www/ProparCompany/VIEW/index.php" ){
                 window.location.href = 'index.php';
             }
         },
