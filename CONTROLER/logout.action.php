@@ -2,6 +2,9 @@
 session_start();
 
 unset($_SESSION['login']);
+unset($_SESSION['name']);
+unset($_SESSION['firstname']);
+unset($_SESSION['status']);
 
 if (!isset($_SESSION['login']) and empty($_SESSION['login'])){
     $errorMsg['loginExist'] = false;

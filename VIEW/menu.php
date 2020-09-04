@@ -1,5 +1,10 @@
 <?php
 session_start();
+//on empêche l'accès à menu.php si on est pas log
+if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
+    header('Location: index.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +24,7 @@ session_start();
     <div class="container">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
-                <h1>ProparCompany Options</h1>
+                <h1>ProparCompany</h1>
             </div>
             <div class="col-4 text-center">
                 <h1 id="my-hour"></h1>
@@ -31,17 +36,118 @@ session_start();
     </div>
 </header>
 
+<div class="container-xl">
+    <div class="welcomeBack">
+        <h3>Welcome back
+            <span id="welcomeBackContent">
+                <?php
+                echo $_SESSION['name'] . ' ' . $_SESSION['firstname'] . '.';
+                ?>
+            </span>
+        </h3>
+    </div>
 
+    <div class="myCurrentJobs">
+        <h1>Your current jobs :</h1>
+        <div id="yourCurrentJob">
+
+        </div>
+    </div>
+
+    <div class="menu">
+        <div class="navMenu">
+            <h4>1</h4>  
+            <div class="subjectMenu">
+               <h5>List of finish or current jobs</h5>
+                <p>no-restricted</p>
+            </div>
+            <button><img src="img/button-play2.png" "></button>
+        </div>
+        <div class="navMenu">
+            <h4>2</h4>
+            <div class="subjectMenu">
+                <h5>Unassigned jobs list</h5>
+                <p>no-restricted</p>
+            </div>
+            <button><img src="img/button-play2.png" "></button>
+        </div>
+        <div class="navMenu">
+            <h4>3</h4>
+            <div class="subjectMenu">
+                <h5>Validate a job</h5>
+                <p>no-restricted</p>
+            </div>
+            <button><img src="img/button-play2.png" "></button>
+        </div>
+        <div class="navMenu">
+            <h4>4</h4>
+            <div class="subjectMenu">
+                <h5>Create a new job</h5>
+                <p>no-restricted</p>
+            </div>
+            <button><img src="img/button-play2.png" "></button>
+        </div>
+        <?php
+        if ($_SESSION['status'] == 'expert'){
+            echo " 
+                <div class='navMenu'>
+                <h4>5</h4>
+                <div class='subjectMenu'>
+                    <h5>Create a new type of job</h5>
+                    <p>restricted</p>
+                </div>
+                <button><img src='img/button-play2.png'></button>
+            </div>
+            <div class='navMenu'>
+                <h4>6</h4>
+                <div class='subjectMenu'>
+                    <h5>Add a new worker</h5>
+                    <p>restricted</p>
+                </div>
+                <button><img src='img/button-play2.png'></button>
+            </div>
+            <div class='navMenu'>
+                <h4>7</h4>
+                <div class='subjectMenu'>
+                    <h5>Worker list</h5>
+                    <p>restricted</p>
+                </div>
+                <button><img src='img/button-play2.png'></button>
+            </div>
+            <div class='navMenu'>
+                <h4>8</h4>
+                <div class='subjectMenu'>
+                    <h5>Revenue</h5>
+                    <p>restricted</p>
+                </div>
+                <button><img src='img/button-play2.png'></button>
+            </div>
+            ";
+        }
+        ?>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+</div>
 
 
 </body>
-<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/libs/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script src="js/main.js"></script>
-<script src="js/modal.js"></script>
-
+<script src="js/libs/modal.js"></script>
+<script src="js/menu.js"></script>
 
 
 </html>
