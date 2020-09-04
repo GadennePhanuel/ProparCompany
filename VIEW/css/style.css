@@ -103,7 +103,9 @@ table.dataTable thead th, table.dataTable thead td {
 .dataTables_filter input{
     border-radius: 5px;
 }
-
+td{
+    max-width: 500px !important;
+}
 
 /*
 Css général des boites modales
