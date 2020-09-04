@@ -164,6 +164,32 @@ $('.buttonEndJob').click(function (e){
     $('#divTableUnassignedJob').hide()
     $('#divTableEndJob').show()
 })
+/*
+appel ajax simplement pour vérifier si il y a déja un session de conection en cours ou pas (au quel cas on modifie le button Log In en Log Out
+ */
+$.ajax({
+    url: '../CONTROLER/checkSession.action.php',
+    type: 'POST',
+    dataType: 'json',
+
+    success: function (response){
+       // response = JSON.parse(response)
+            if(response.loginExist == true){
+            $('#buttonLogin').removeClass('btn-warning');
+            $('#buttonLogin').addClass('btn-danger');
+
+            $('#linkLogin').attr('href', '#');
+            $('#linkLogin').removeClass('js-modal')
+            $('#linkLogin').text('Log Out');
+        }
+    },
+    error:function(response){
+        console.log('error');
+        alert("error");
+    }
+})
+
+
 
 
 /*
@@ -171,6 +197,8 @@ gestion de l'appel AJAX lors de la demande de connection
  */
 $('#connect').click(function (e){
     e.preventDefault();
+    $('#errorLogin').text('');
+    $('#errorPassword').text('');
     $.ajax({
         url: '../CONTROLER/login.action.php',
         type: 'POST',
@@ -180,15 +208,50 @@ $('#connect').click(function (e){
             password : $("#password").val()
         },
         success: function (response){
-            
+           // response = $.parseJSON(response)
+            if (response.validConnection == true){
+                window.location.replace("menu.php");
+            }else
+            if (response.errorLogin != null && response.errorPassword != null){
+                $('#errorLogin').text(response.errorLogin);
+                $('#errorPassword').text(response.errorPassword);
+            }else
+            if (response.errorLogin == null && response.errorPassword != null){
+                $('#errorPassword').text(response.errorPassword);
+            }else
+            if (response.errorLogin != null && response.errorPassword == null){
+                $('#errorLogin').text(response.errorLogin);
+            }
 
-
-
-
+        },
+        error:function(response){
+            console.log('error');
+            alert("error");
         }
     })
 })
 
+/*
+evenement log Out
+ */
+$('#linkLogin').click(function (e){
+    $.ajax({
+        url: '../CONTROLER/logout.action.php',
+        type: 'POST',
+        dataType: 'json',
+
+        success: function (response){
+            if (response.loginExist == false){
+                $('#buttonLogin').removeClass('btn-danger');
+                $('#buttonLogin').addClass('btn-warning');
+
+                $('#linkLogin').attr('href', '#modalLogin');
+                $('#linkLogin').addClass('js-modal')
+                $('#linkLogin').text('Log In');
+            }
+        },
+    })
+})
 
 
 

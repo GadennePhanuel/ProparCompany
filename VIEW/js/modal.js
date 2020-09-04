@@ -17,7 +17,6 @@ let previouslyFocusedElement = null   //servira a conserver le pointage sur le l
 //ouverture boite modale
 const openModal = async function (e) {        //on precise async pour le coté AJAX
     e.preventDefault()
-    console.log('salut')
     const target = e.target.getAttribute('href')
     if (target.startsWith('#')){             //cas normal pur HTML
         modal = document.querySelector(target)       //on sélectionne la cible (donc le lien) et on récupère son href (qui pointe vers la div contenant le code html (initialement en display none) qui sera le contenu de la boite)

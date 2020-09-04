@@ -17,23 +17,27 @@ $req = $req->fetchAll(\PDO::FETCH_ASSOC);       //je récupére un tableau multi
 
 //je parcours le tableau
 foreach ($req as $workerAuthentication){
-    if ($workerAuthentication[0] === $login && $workerAuthentication[1] === $password){
+    if ($workerAuthentication['login'] === $login && $workerAuthentication['password'] === $password){
         $_SESSION['login'] = $login;
-        header('Location: ../VIEW/menu.html');
-    }else
-    if ($workerAuthentication[0] != $login & $workerAuthentication[1] === $password){
-        $errorLogin = "Incorrect or unknown login";
-        $errorMsg['errorLogin'] = $errorLogin;
+        $errorMsg['validConnection'] = true;
         echo json_encode($errorMsg);
+        exit();
     }else
-    if ($workerAuthentication[0] === $login & $workerAuthentication[1] != $password){
-        $errorPassword = "Wrong password";
-        $errorMsg['errorPassword'] = $errorPassword;
+    if ($workerAuthentication['login'] != $login & $workerAuthentication['password'] === $password){
+        $errorMsg['errorLogin'] =  "Incorrect or unknown login !";
         echo json_encode($errorMsg);
+        exit();
+
+    }else
+    if ($workerAuthentication['login'] === $login & $workerAuthentication['password'] != $password){
+        $errorMsg['errorPassword'] = "Wrong password !";
+        echo json_encode($errorMsg);
+        exit();
     }else{
-        $errorLogin = "Incorrect or unknown login";
-        $errorPassword = "Wrong password";
+        $errorMsg['errorLogin'] =  "Incorrect or unknown login !";
+        $errorMsg['errorPassword'] = "Wrong password !";
         echo json_encode($errorMsg);
+        exit();
     }
 }
 

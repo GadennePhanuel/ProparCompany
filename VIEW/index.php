@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +25,7 @@
                     <h1 id="my-hour"></h1>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
-                    <button type="button" class="btn btn-warning btn-rounded"><a href="#modalLogin" class="js-modal">Log In</a></button>
+                    <button type="button" class="btn btn-warning btn-rounded" id="buttonLogin"><a href="#modalLogin" class="js-modal" id="linkLogin">Log In</a></button>
                 </div>
             </div>
         </div>
@@ -100,8 +104,10 @@
                 <form action="#" class="login">
                     <label for="login">Login</label>
                     <input type="text" name="login" id="login" placeholder="your login">
+                    <p id="errorLogin"></p>
                     <label for="password">Password</label>
                     <input type="text" name="password" id="password" placeholder="your password">
+                    <p id="errorPassword"></p>
                     <button type="submit" class="btn btn-primary " id="connect">Connect !</button>
                 </form>
             </div>
