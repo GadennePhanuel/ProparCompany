@@ -42,7 +42,7 @@ session_start();
         </div>
 
         <div id="divTableUnassignedJob">
-            <table class="table" id="tableUnassignedJob">
+            <table data-page-length='25' class="table" id="tableUnassignedJob">
                 <thead class=" thead-dark">
                     <tr>
                         <th class="columnID" scope="col">#</th>
@@ -59,7 +59,7 @@ session_start();
         </div>
 
         <div id="divTableCurrentJob">
-            <table class="table" id="tableCurrentJob">
+            <table data-page-length='25' class="table" id="tableCurrentJob">
                 <thead class=" thead-dark">
                 <tr>
                     <th class="columnID" scope="col">#</th>
@@ -78,7 +78,7 @@ session_start();
         </div>
 
         <div id="divTableEndJob">
-            <table class="table" id="tableEndJob">
+            <table data-page-length='25' class="table" id="tableEndJob">
                 <thead class=" thead-dark">
                 <tr>
                     <th class="columnID" scope="col">#</th>

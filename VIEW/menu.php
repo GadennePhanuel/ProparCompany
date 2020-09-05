@@ -61,7 +61,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                <h5>List of finish or current jobs</h5>
                 <p>no-restricted</p>
             </div>
-            <button><img src="img/button-play2.png" "></button>
+            <a href="modalListJob.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
         </div>
         <div class="navMenu">
             <h4>2</h4>
@@ -69,7 +69,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <h5>Unassigned jobs list</h5>
                 <p>no-restricted</p>
             </div>
-            <button><img src="img/button-play2.png" "></button>
+            <a href="modalListJob.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
         </div>
         <div class="navMenu">
             <h4>3</h4>
@@ -77,7 +77,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <h5>Validate a job</h5>
                 <p>no-restricted</p>
             </div>
-            <button><img src="img/button-play2.png" "></button>
+            <a href="modalListJob.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
         </div>
         <div class="navMenu">
             <h4>4</h4>
@@ -85,7 +85,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <h5>Create a new job</h5>
                 <p>no-restricted</p>
             </div>
-            <button><img src="img/button-play2.png" "></button>
+            <a href="modalListJob.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
         </div>
         <?php
         if ($_SESSION['status'] == 'expert'){
@@ -96,7 +96,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <h5>Create a new type of job</h5>
                     <p>restricted</p>
                 </div>
-                <button><img src='img/button-play2.png'></button>
+                <a href='modalListJob.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             <div class='navMenu'>
                 <h4>6</h4>
@@ -104,7 +104,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <h5>Add a new worker</h5>
                     <p>restricted</p>
                 </div>
-                <button><img src='img/button-play2.png'></button>
+                <a href='modalListJob.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             <div class='navMenu'>
                 <h4>7</h4>
@@ -112,7 +112,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <h5>Worker list</h5>
                     <p>restricted</p>
                 </div>
-                <button><img src='img/button-play2.png'></button>
+                <a href='modalListJob.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             <div class='navMenu'>
                 <h4>8</h4>
@@ -120,7 +120,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <h5>Revenue</h5>
                     <p>restricted</p>
                 </div>
-                <button><img src='img/button-play2.png'></button>
+                <a href='modalListJob.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             ";
         }
@@ -149,5 +149,5 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
 <script src="js/libs/modal.js"></script>
 <script src="js/menu.js"></script>
 
-
 </html>
+

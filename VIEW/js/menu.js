@@ -1,7 +1,21 @@
 getTime();
+
+//on cache par défaut les div des tableaux des job fini et non assigné, on veut qu'on chargement de la page on soit focus sur les currentJobs
+$('#divTableUnassignedJob').hide();
+$('#divTableEndJob').hide();
+
+refreshTableAndCount();
+
+createActiveOnButton();
+
+hideAndShowTableJob();
+
 checkLog();
+
 makeLogIn();
+
 makeLogOut();
+
 
 $.ajax({
     url : '../CONTROLER/downloadMyCurrentJobs.action.php',
@@ -9,7 +23,6 @@ $.ajax({
     dataType: 'json',
     success : function (response){
        // response = $.parseJSON(response)
-        console.log(response[0])
         response.forEach(function (element){
             $('#yourCurrentJob').append(
                 "<div class='yourCurrentJobContent'>" +
