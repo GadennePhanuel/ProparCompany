@@ -61,7 +61,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                <h5>List of finish or current jobs</h5>
                 <p>no-restricted</p>
             </div>
-            <a href="modalListJob.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
+            <a href="modalListJobC&F.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
         </div>
         <div class="navMenu">
             <h4>2</h4>
@@ -69,7 +69,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <h5>Unassigned jobs list</h5>
                 <p>no-restricted</p>
             </div>
-            <a href="modalListJob.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
+            <a href="modalListJobNA.php#modal2" class="js-modal round-button" id="buttonListNAJobs"></a>
         </div>
         <div class="navMenu">
             <h4>3</h4>
@@ -77,7 +77,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <h5>Validate a job</h5>
                 <p>no-restricted</p>
             </div>
-            <a href="modalListJob.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
+            <a href="modalListJobC&F.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
         </div>
         <div class="navMenu">
             <h4>4</h4>
@@ -85,7 +85,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <h5>Create a new job</h5>
                 <p>no-restricted</p>
             </div>
-            <a href="modalListJob.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
+            <a href="modalListJobC&F.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
         </div>
         <?php
         if ($_SESSION['status'] == 'expert'){
@@ -96,7 +96,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <h5>Create a new type of job</h5>
                     <p>restricted</p>
                 </div>
-                <a href='modalListJob.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
+                <a href='modalListJobC&F.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             <div class='navMenu'>
                 <h4>6</h4>
@@ -104,7 +104,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <h5>Add a new worker</h5>
                     <p>restricted</p>
                 </div>
-                <a href='modalListJob.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
+                <a href='modalListJobC&F.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             <div class='navMenu'>
                 <h4>7</h4>
@@ -112,7 +112,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <h5>Worker list</h5>
                     <p>restricted</p>
                 </div>
-                <a href='modalListJob.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
+                <a href='modalListJobC&F.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             <div class='navMenu'>
                 <h4>8</h4>
@@ -120,7 +120,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <h5>Revenue</h5>
                     <p>restricted</p>
                 </div>
-                <a href='modalListJob.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
+                <a href='modalListJobC&F.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             ";
         }
@@ -145,7 +145,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-<script src="js/main.js"></script>
+<script src="js/libs/main.js"></script>
 <script src="js/libs/modal.js"></script>
 <script src="js/menu.js"></script>
 

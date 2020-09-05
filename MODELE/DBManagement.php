@@ -118,9 +118,9 @@ class DBManagement
         ));
     }
 
-    public static function attributeJob(Job $job, string $login): void     //le login de l'employé connecté est enregistrer dans la session donc on peut s'en servir pour aller chercher son id
+    public static function attributeJob(int $id_job, int $id_worker): void
     {
-        //on doit bien sur reconstruire l'objet $job à partir de la bdd, quand le tableau d'affichage s'autogénere avec chacun un boutton en fin de ligne pour se l'attribuer, le boutton value = id_job
+
 
         $dbi = Singleton::getInstance()->getConnection();
 
@@ -137,7 +137,7 @@ class DBManagement
 
         $req->execute(array(
             'status' => 'attributed',
-            'id_job' => $job->getIdJob(),
+            'id_job' => $id_job,
             'id_worker' => $id_worker,
             'date_attributed' => $currentDate->format('Y-m-d'),
         ));

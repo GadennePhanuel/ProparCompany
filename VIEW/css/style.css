@@ -213,6 +213,11 @@ button pour choisir affichage des tableau de jobs
     border: #9FA2B4 solid 2px;
     border-radius: 5px;
 }
+.buttonJob2:focus{
+    outline: none !important;
+    border: #9FA2B4 solid 2px;
+    border-radius: 5px;
+}
 .jobsDisplayButton button h4{
     font-size: 1.75rem;
     font-weight: 700;
