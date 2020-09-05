@@ -25,8 +25,6 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
     <div class="modal-wrapper-ListJob js-modal-stop" >
         <a href="#" class="js-modal-close"><img src="img/button-cross.png" width="50px"></a>
 
-
-        </div>
     </div>
 
 
@@ -39,8 +37,8 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <script src="js/libs/main.js"></script>
-    <script src="js/libs/modal.js"></script>
-    <script src="js/modalListJobC&F.js"></script>
+<!--    <script src="js/libs/modal.js"></script>-->
+    <script src="js/modalValidateAJob.js"></script>
 </aside>
 
 </body>

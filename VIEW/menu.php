@@ -77,7 +77,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <h5>Validate a job</h5>
                 <p>no-restricted</p>
             </div>
-            <a href="modalListJobC&F.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
+            <a href="modalValidateAJob.php#modal3" class="js-modal round-button" id="buttonListC&FJobs"></a>
         </div>
         <div class="navMenu">
             <h4>4</h4>
