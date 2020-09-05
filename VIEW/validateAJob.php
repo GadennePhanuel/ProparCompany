@@ -6,6 +6,8 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
     exit();
 }
 ?>
+
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -51,7 +53,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <tr>
                     <th class="columnID" scope="col">#</th>
                     <th class="columnDate" scope="col">Init Date</th>
-                    <th class="columnDate" scope="col">Assignment Date</th>
+                    <th class="columnDate" scope="col">Start Date</th>
                     <th class="columnCustomer" scope="col">Customer</th>
                     <th class="columnType" scope="col">type</th>
                     <th class="columnCommentary" scope="col">Commentary</th>
@@ -76,7 +78,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <script src="js/libs/main.js"></script>
-<!--    <script src="js/libs/modal.js"></script>-->
+    <!--    <script src="js/libs/modal.js"></script>-->
     <script src="js/modalListJobC&F.js"></script>
 </aside>
 
