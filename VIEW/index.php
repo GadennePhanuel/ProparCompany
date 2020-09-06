@@ -103,12 +103,12 @@ session_start();
                 <a href="#" class="js-modal-close"><img src="img/button-cross.png" width="50px"></a>
                 <form action="#" class="login">
                     <label for="login">Login</label>
-                    <input type="text" name="login" id="login" placeholder="your login">
+                    <input type="text" name="login" id="login" placeholder="your login" class="field">
                     <p id="errorLogin"></p>
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="your password">
+                    <input type="password" name="password" id="password" placeholder="your password" class="field">
                     <p id="errorPassword"></p>
-                    <button type="submit" class="btn btn-primary " id="connect">Connect !</button>
+                    <button type="submit" class="btn btn-primary actions" id="connect">Connect !</button>
                 </form>
             </div>
         </div>
