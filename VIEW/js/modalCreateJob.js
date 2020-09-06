@@ -107,7 +107,6 @@ $('#validateNewJob').click(function (e){
                 console.log(response.msg)
                 if (response.msg == false){
                     alert('email already exist')
-                    
                 }else{
                     alert('a new job has created, thank you')
                     window.location.href = 'menu.php'
