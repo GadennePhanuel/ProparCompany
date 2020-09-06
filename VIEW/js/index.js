@@ -12,6 +12,7 @@ hideAndShowTableJob();
 
 checkLog();
 
+
 /*
 on crée un petit event sur le formulaire de connection pour disabled le button submit si les champs sont pas rempli
  */
@@ -34,7 +35,8 @@ $('.field').keyup(function() {
     }
 });
 
-makeLon();
+
+makeLogIn();
 
 makeLogOut();
 
