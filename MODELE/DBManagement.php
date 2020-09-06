@@ -88,7 +88,7 @@ class DBManagement
         ));
     }
 
-    public static function addJob(Customer $customer, string $commentary, int $idJobType): void
+    public static function addJob(int $id_customer, string $commentary, string $nameJobType): void
     {
         date_default_timezone_set('Europe/Paris');
         $date = date('d-m-Y');
@@ -96,12 +96,11 @@ class DBManagement
 
         $dbi = Singleton::getInstance()->getConnection();
 
-        $id_customer = $dbi->prepare("SELECT id_customer FROM customers WHERE name = :name AND email = :email");
-        $id_customer->execute([
-            'name' =>$customer->getName(),
-            'email' => $customer->getEmail()
+        $id_jobType = $dbi->prepare("SELECT id_jobType FROM jobs_type WHERE name = :name");
+        $id_jobType->execute([
+            'name' => $nameJobType
         ]);
-        $id_customer = $id_customer->fetch(\PDO::FETCH_ASSOC);
+        $id_jobType = $id_jobType->fetch(\PDO::FETCH_ASSOC);
 
 
         $req = $dbi->prepare("INSERT INTO jobs
@@ -111,8 +110,8 @@ class DBManagement
 
         $req->execute(array(
             'commentary' => $commentary,
-            'id_jobType' => $idJobType,
-            'id_customer' => $id_customer['id_customer'],
+            'id_jobType' => $id_jobType['id_jobType'],
+            'id_customer' => $id_customer,
             'date_init' => $currentDate->format('Y-m-d'),
             'status' => 'init'
         ));

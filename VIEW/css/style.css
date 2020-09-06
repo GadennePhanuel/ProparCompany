@@ -421,6 +421,109 @@ partie navigation
 }
 
 
+/*
+////////////////////////////////////////////////////////
+////                                                ////
+////            STYLE Modal CreateJob               ////
+////                                                ////
+////////////////////////////////////////////////////////
+ */
+#modal4 h1{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+.customerOptions{
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px;
+}
+#createOrSelectCustomer label{
+    margin-left: 10px;
+}
+#createOrSelectCustomer button{
+    display: block;
+    margin: 20px auto 5px auto;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 15px 30px;
+}
+#selectCustomerForm{
+    margin: 20px 0;
+}
+#selectCustomerForm label{
+    margin: 0px 10px 0px 0;
+}
+#createCustomerForm h3{
+    margin-top: 15px;
+}
+.formNewCustomer{
+    display: flex;
+    flex-direction: column;
+}
+.formNewCustomer div input{
+   width: calc(33% - 2px);
+}
+.formNewCustomer input{
+    margin: 5px 0;
+    border-radius: 5px;
+    padding: 5px;
+}
+#jobOptions{
+    margin-top: 15px;
+}
+#jobOptions textarea{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    outline: none;
+
+}
+#jobTypeList{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 5px 5px 5px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+#jobTypeList div{
+    margin: 5px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

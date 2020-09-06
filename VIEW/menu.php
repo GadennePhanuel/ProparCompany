@@ -85,7 +85,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <h5>Create a new job</h5>
                 <p>no-restricted</p>
             </div>
-            <a href="modalListJobC&F.php#modal1" class="js-modal round-button" id="buttonListC&FJobs"></a>
+            <a href="modalCreateJob.php#modal4" class="js-modal round-button" id="buttonListC&FJobs"></a>
         </div>
         <?php
         if ($_SESSION['status'] == 'expert'){
