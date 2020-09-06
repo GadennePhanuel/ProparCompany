@@ -5,13 +5,13 @@ namespace ProparCompany;
 class DBManagement
 {
 
-    public static function createNewJobType(object $jobType): void
+    public static function createNewJobType(string $name, string $price): void
     {
         $dbi = Singleton::getInstance()->getConnection();
         $req = $dbi->prepare("INSERT INTO jobs_type (name, price) VALUES (:name, :price)");
         $req->execute(array(
-            'name' => $jobType->getName(),
-            'price' => $jobType->getPrice()
+            'name' => $name,
+            'price' => $price
         ));
     }
 
