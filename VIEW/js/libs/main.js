@@ -322,6 +322,59 @@ function loadYourCurrentJob(){
     })
 }
 
+function loadYourCurrentJobModal(){
+    $.ajax({
+        url : '../CONTROLER/downloadMyCurrentJobs.action.php',
+        type: 'POST',
+        dataType: 'json',
+        success : function (response){
+            // response = $.parseJSON(response)
+            response.forEach(function (element){
+                $('#personalCurrentJob').append(
+                    "<div class='personnalCurrentJobContent'>" +
+                        "<h5>" +
+                            "Job number " + element.id_job + ' of ' + element.date_init +
+                        "</h5>" +
+                        "<div class='personnalCurrentJobContentText'>"+
+                            "<div>" +
+                                "<p>" +
+                                "Type: " + element.nameJobType +
+                                "</p>" +
+                                "<p>" +
+                                "Starting date: " + element.date_attributed +
+                                "</p>" +
+                                "<p>" +
+                                "Customer: " + element.nameCustomer + ' ' + element.firstnameCustomer +"<br>" + element.address + "<br>" + element.cityCustomer +
+                                "</p>" +
+                                "<p>" +
+                                "Commentary: " + element.commentary +
+                                "</p>" +
+                            "</div>" +
+                            "<div>" +
+                                "<button type='button' class='buttonValidateAJob'> Validate this work n°" + "<span>" + element.id_job + "</span>" + "</button>" +
+                            "</div>" +
+                        "</div>"+
+                    "</div>"
+                )
+            })
+
+            if (response[0] === undefined){
+                $('#yourCurrentJob').append(
+                    "<div class='personnalCurrentJobContent'>" +
+                    "<h5>" +
+                    "No work in progress" +
+                    "</h5>" +
+                    "</div>"
+                )
+            }
+
+        },
+        error:function(response){
+            console.log('error');
+            alert("error");
+        }
+    })
+}
 
 
 

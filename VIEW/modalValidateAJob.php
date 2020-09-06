@@ -22,9 +22,12 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
 
 
 <aside id="modal3" class="modal"  aria-labelledby="title_modal" >
-    <div class="modal-wrapper-ListJob js-modal-stop" >
+    <div class="modal-wrapper js-modal-stop" >
         <a href="#" class="js-modal-close"><img src="img/button-cross.png" width="50px"></a>
+        <h1>Your current jobs :</h1>
+        <div id="personalCurrentJob">
 
+        </div>
     </div>
 
 

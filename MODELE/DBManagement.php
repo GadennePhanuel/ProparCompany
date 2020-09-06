@@ -143,6 +143,32 @@ class DBManagement
         ));
     }
 
+    public static function endJob(int $id_job): bool
+    {
+
+
+        $dbi = Singleton::getInstance()->getConnection();
+
+        date_default_timezone_set('Europe/Paris');
+        $date = date('d-m-Y');
+        $currentDate = new \DateTime($date);
+
+        $req = $dbi->prepare("UPDATE jobs
+                            SET 
+                            date_end = :date_end, status = :status
+                            WHERE
+                            id_job = :id_job
+                            ");
+
+        $req->execute(array(
+            'status' => 'finish',
+            'id_job' => $id_job,
+            'date_end' => $currentDate->format('Y-m-d'),
+        ));
+        return true;
+    }
+
+
     public static function displayJobNotAttributed(): array
     {
         $dbi = Singleton::getInstance()->getConnection();
