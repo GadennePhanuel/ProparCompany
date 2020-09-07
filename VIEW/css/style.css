@@ -591,6 +591,27 @@ partie navigation
 }
 
 
+/*
+////////////////////////////////////////////////////////////////
+////                                                        ////
+////            STYLE Modal Revenu                          ////
+////                                                        ////
+////////////////////////////////////////////////////////////////
+ */
+
+#modal8 h1{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+#errorMsgDate{
+    font-family: "Kalam", sans-serif;
+    color: #ff0000;
+    margin: 10px 0;
+}
+
+
 
 
 

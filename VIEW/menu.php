@@ -120,7 +120,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <h5>Revenue</h5>
                     <p>restricted</p>
                 </div>
-                <a href='modalListJobC&F.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
+                <a href='modalRevenu.php#modal8' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             ";
         }
