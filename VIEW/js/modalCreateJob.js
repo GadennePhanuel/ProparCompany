@@ -21,7 +21,7 @@ $.ajax({
     },
     error: function (response){
         console.log('error')
-        alert('error')
+        alert('error1545145')
     }
 })
 
@@ -66,67 +66,81 @@ $('#validateNewJob').click(function (e){
 
     if ($('#selectExistantCustomer').is(':disabled') == false)
     {
-        $.ajax({
-            url: '../CONTROLER/newJobWithExistantCustomer.action.php',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                id_customer : $("#selectExistantCustomer").val(),
-                nameJobType : $("input[name=type_job]:checked").val(),
-                commentary : $("#commentary").val()
-            },
-            success: function (response){
-                console.log(response)
-                alert('a new job has created, thank you')
-                window.location.href = 'menu.php'
-            },
-            error: function (response){
-                console.log('error')
-                alert('error')
-            }
-        })
+        if ($("#selectExistantCustomer").val().length !== 1){
+            $('#errorSelectCustomer').text('please, select a customer...')
+        }else{
+            console.log($("#selectExistantCustomer").val().length)
+            $.ajax({
+                url: '../CONTROLER/newJobWithExistantCustomer.action.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    id_customer : $("#selectExistantCustomer").val(),
+                    nameJobType : $("input[name=type_job]:checked").val(),
+                    commentary : $("#commentary").val()
+                },
+                success: function (response){
+                    if (response.check == false){
+                        alert('internal error, new job no validate')
+                    }else{
+                        alert('a new job has created, thank you')
+                        window.location.href = 'menu.php'
+                    }
+                },
+                error: function (response){
+                    console.log('error')
+                    alert('error')
+                }
+            })
+        }
 
     }else
     {
-        $.ajax({
-            url: '../CONTROLER/newJobWithNewCustomer.action.php',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                name : $('#nameNewCustomer').val(),
-                firstname : $('#firstnameNewCustomer').val(),
-                birthday : $('#birthdayNewCustomer').val(),   //format string
-                email : $('#emailNewCustomer').val(),
-                phone : $('#phoneNewCustomer').val(),
-                address : $('#addressNewCustomer').val(),
-                city : $('#cityNewCustomer').val(),
-                nameJobType : $("input[name=type_job]:checked").val(),
-                commentary : $("#commentary").val()
-            },
-            success: function (response){
-                console.log(response.msg)
-                if (response.msg == false){
-                    alert('email already exist')
-                }else{
-                    alert('a new job has created, thank you')
-                    window.location.href = 'menu.php'
+
+        if ($("#nameNewCustomer").val().length == 0 ||
+            $("#firstnameNewCustomer").val().length == 0 ||
+            $("#birthdayNewCustomer").val().length == 0 ||
+            $("#emailNewCustomer").val().length == 0 ||
+            $("#phoneNewCustomer").val().length == 0 ||
+            $("#addressNewCustomer").val().length == 0 ||
+            $("#cityNewCustomer").val().length == 0
+            ) {
+            $('#errorSelectCustomer').text('one or more inputs are empty')
+        }else{
+            $.ajax({
+                url: '../CONTROLER/newJobWithNewCustomer.action.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    name : $('#nameNewCustomer').val(),
+                    firstname : $('#firstnameNewCustomer').val(),
+                    birthday : $('#birthdayNewCustomer').val(),   //format string
+                    email : $('#emailNewCustomer').val(),
+                    phone : $('#phoneNewCustomer').val(),
+                    address : $('#addressNewCustomer').val(),
+                    city : $('#cityNewCustomer').val(),
+                    nameJobType : $("input[name=type_job]:checked").val(),
+                    commentary : $("#commentary").val()
+                },
+                success: function (response){
+                    if (response.check == false){
+                        alert('internal error, new job no validate')
+                    }else{
+                        if (response.msg == false){
+                            alert('email already exist')
+                        }else{
+                            alert('a new job has created, thank you')
+                            window.location.href = 'menu.php'
+                        }
+                    }
+                },
+                error: function (response){
+                    console.log('error')
+                    alert('error')
                 }
-
-            },
-            error: function (response){
-                console.log('error')
-                alert('merde')
-            }
-        })
-
+            })
+        }
     }
-
-
-
-
-
-
-
 })
 
 

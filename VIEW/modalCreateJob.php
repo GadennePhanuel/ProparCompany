@@ -52,8 +52,8 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                                <input type="text" placeholder="Firstname" name="firstname" id="firstnameNewCustomer">
                                <input type="date" placeholder="Birthday" name="birthday" id="birthdayNewCustomer">
                            </div>
-                           <input type="text" placeholder="Email" name="email" id="emailNewCustomer">
-                           <input type="text" placeholder="Phone" name="phone" id="phoneNewCustomer">
+                           <input type="email" placeholder="Email" name="email" id="emailNewCustomer">
+                           <input type="tel" placeholder="Mobile Phone Required" name="phone" id="phoneNewCustomer" pattern="^0[0-9]{9}" minlength="10" maxlength="10">
                            <input type="text" placeholder="Address" name="address" id="addressNewCustomer">
                            <input type="text" placeholder="City" name="city" id="cityNewCustomer">
                        </div>
@@ -78,6 +78,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <textarea name="commentary" id="commentary"  rows="2" placeholder="Commentary..." ></textarea>
                 </div>
                 <div>
+                    <p id="errorSelectCustomer"></p>
                     <button type="submit" class="btn btn-danger" id="validateNewJob">VALIDATE</button>
                 </div>
             </div>

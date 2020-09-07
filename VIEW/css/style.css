@@ -493,7 +493,11 @@ partie navigation
 #jobTypeList div{
     margin: 5px 0;
 }
-
+#errorSelectCustomer{
+    font-family: "Kalam", sans-serif;
+    color: #ff0000;
+    margin-top: 10px;
+}
 
 /*
 ////////////////////////////////////////////////////////////////
