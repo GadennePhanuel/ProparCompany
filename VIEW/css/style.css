@@ -575,9 +575,20 @@ partie navigation
 
 
 
+/*
+////////////////////////////////////////////////////////////////
+////                                                        ////
+////            STYLE Modal WorkerList                      ////
+////                                                        ////
+////////////////////////////////////////////////////////////////
+ */
 
-
-
+#modal7 h1{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
 
 
 
