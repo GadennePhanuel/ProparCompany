@@ -38,7 +38,7 @@ class DBManagement
         ));
     }
 
-    public static function modifyWorker(Worker $worker, $status): void
+    public static function modifyWorker(int $id_worker, string $status): void
     {
         $dbi = Singleton::getInstance()->getConnection();
 
@@ -46,11 +46,10 @@ class DBManagement
                                         SET
                                         status = :status
                                         WHERE 
-                                        name = :name AND login = :login
+                                        id_worker = :id_worker
                                         ");
         $req->execute(array(
-            'name' => $worker->getName(),
-            'login' =>$worker->getLogin(),
+            'id_worker' => $id_worker,
             'status' => $status
         ));
     }

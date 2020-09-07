@@ -5,75 +5,129 @@ $.ajax({
     dateType: 'json',
     success: function (response){
         response = $.parseJSON(response)
-
         //création du tableaux
-        response[0].forEach(function (element){
+        response.forEach(function (worker){
             $('#tBodyTableWorkerList').append(
                 "<tr>" +
-                "<th>"+
-                element.id_job +
-                "</th>" +
-                "<td>"+
-                element.date_init +
-                "</td>" +
-                "<td style=' text-transform:capitalize;'>"+
-                element.name + ' ' + element.firstname +
-                "</td>" +
-                "<td>"+
-                element.nameType +
-                "</td>" +
-                "<td>"+
-                element.commentary +
-                "</td>" +
-                "<td>"+
-                "<button type='button' class='pickJob js-modal-close' style='width: 100px; height: 25px'> Pick n°" + "<span>" + element.id_job + "</span>" +"</button>" +
-                // "<a href='#' class='pickJob js-modal-close' style='display: block; width: 100px; height: 25px; border: 1px solid #3751FF'> Pick n°" + "<span>" + element.id_job + "</span>" +"</a>" +
-                "</td>" +
+                    "<th>" +
+                        worker.id_worker +
+                    "</th>" +
+                    "<td>" +
+                        worker.name +
+                    "</td>" +
+                    "<td>" +
+                        worker.firstname +
+                    "</td>" +
+                    "<td>" +
+                        worker.dateHiring +
+                    "</td>" +
+                    "<td>" +
+                        worker.phone +
+                    "</td>" +
+                    "<td>" +
+                        worker.status +
+                    "</td>" +
+                    "<td>" +
+                    "<button type='button' class='initExpert js-modal-close'> expert" + "<span hidden>" + worker.id_worker + "</span>" +"</button>" +
+                    "<button type='button' class='initSenior js-modal-close'> sénior" + "<span hidden>" + worker.id_worker + "</span>" +"</button>" +
+                    "<button type='button' class='initApprenti js-modal-close'> apprenti" + "<span hidden>" + worker.id_worker + "</span>" +"</button>" +
+                    "</td>"+
                 "</tr>"
             )
         })
 
         // ajout du dataTable (champs de recherche)
         $(document).ready(function () {
-            $('#tableUnassignedJob').DataTable();
+            $('#tableWorkerList').DataTable();
             $('.dataTables_length').addClass('bs-select');
         });
 
         /*
-        on crée la gestion de la selection d'un job
+        on crée la gestion de l'init d'un worker en expert
          */
-        // $('.pickJob').click(function (e){
-        //     e.preventDefault()
-        //     //quand on click sur le button on récupére l'id du job choisi
-        //     let idJobTarget =  $(this).children('span').text()
-        //
-        //     /*
-        //     on envoi via un appel AJAX les identifiant de l'employé et du l'id du job qui la choisi. Ceci afin de mettre a jour la DT
-        //      */
-        //     $.ajax({
-        //         url: '../CONTROLER/attributeJob.action.php',
-        //         type: 'POST',
-        //         dataType: 'json',
-        //         data: {
-        //             id_job: idJobTarget
-        //         },
-        //         success: function (response){
-        //             //si la demande d'attribution revoie false (donc n'a pas été faites, on fait une alert)
-        //             if (response.validate == false){
-        //                 alert(response.nbJob)
-        //             }
-        //             //si l'assignation du job a bien été faites renvoi sur la page menu.php pour forcer la fermeture de la fmodal et le rechergement des div YourCurrentJob
-        //             if (response.validate == true){
-        //                 window.location.href = 'menu.php';
-        //             }
-        //         },
-        //         error: function (response){
-        //             console.log('error');
-        //             alert("error");
-        //         }
-        //     })
-        //
-        // })
+        $('.initExpert').click(function (e){
+            e.preventDefault()
+            //quand on click sur le button on récupére l'id du job choisi
+            let idWorker =  $(this).children('span').text()
+            console.log(idWorker);
+            /*
+            on envoi via un appel AJAX les identifiant de l'employé et du l'id du job qui la choisi. Ceci afin de mettre a jour la DT
+             */
+            $.ajax({
+                url: '../CONTROLER/initExpert.action.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    id_worker: idWorker
+                },
+                success: function (response){
+                    alert('Done, status change')
+                    window.location.href = 'menu.php'
+                },
+                error: function (response){
+                    console.log('error');
+                    alert("error1");
+                }
+            })
+        })
+                /*
+            on crée la gestion de l'init d'un worker en sénior
+             */
+        $('.initSenior').click(function (e) {
+            e.preventDefault()
+            //quand on click sur le button on récupére l'id du job choisi
+            let idWorker = $(this).children('span').text()
+            console.log(idWorker);
+            /*
+                  on envoi via un appel AJAX les identifiant de l'employé et du l'id du job qui la choisi. Ceci afin de mettre a jour la DT
+                   */
+            $.ajax({
+                url: '../CONTROLER/initSenior.action.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    id_worker: idWorker
+                },
+                success: function (response) {
+                    alert('Done, status change')
+                    window.location.href = 'menu.php'
+                    },
+                error: function (response) {
+                    console.log('error');
+                    alert("error");
+                }
+            })
+        })
+
+        /*
+         on crée la gestion de l'init d'un worker en apprenti
+        */
+        $('.initApprenti').click(function (e) {
+            e.preventDefault()
+            //quand on click sur le button on récupére l'id du job choisi
+            let idWorker = $(this).children('span').text()
+            console.log(idWorker);
+            /*
+                           on envoi via un appel AJAX les identifiant de l'employé et du l'id du job qui la choisi. Ceci afin de mettre a jour la DT
+                            */
+            $.ajax({
+                url: '../CONTROLER/initApprenti.action.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    id_worker: idWorker
+                },
+                success: function (response) {
+                    alert('Done, status change')
+                    window.location.href = 'menu.php'
+                    },
+                error: function (response) {
+                    console.log('error');
+                    alert("error");
+                }
+            })
+
+        })
 
     },
     error:function(response){
