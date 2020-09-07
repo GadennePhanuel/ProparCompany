@@ -34,6 +34,9 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
             <div>
                 <input type="text" placeholder="Price" id="priceType">
             </div>
+            <div id="errorFieldEmpty">
+
+            </div>
             <div>
                 <button type="submit" class="btn btn-danger" id="validateNewTypeJob">VALIDATE</button>
             </div>

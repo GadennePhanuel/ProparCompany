@@ -523,7 +523,10 @@ partie navigation
     font-weight: 700;
     padding: 15px 30px;
 }
-
+#errorFieldEmpty{
+    font-family: "Kalam", sans-serif;
+    color: #ff0000;
+}
 
 
 /*
