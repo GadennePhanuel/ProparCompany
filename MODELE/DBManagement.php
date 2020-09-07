@@ -16,24 +16,25 @@ class DBManagement
     }
 
 
-    public static function createWorker(Worker $worker): void
+    public static function createWorker(string $name, string $firstname, \DateTime $birthday, string $phone, \DateTime $hiringDate, string $status, string $login, string $password): void
     {
         $dbi = Singleton::getInstance()->getConnection();
 
         $req = $dbi->prepare("INSERT INTO workers 
                             (name, firstname, birthday, phone, dateHiring, status, login, password)
                             VALUES
-                            (:name, :firstname, :birthday, :phone, :dateHiring, :status, :login, :password)");
+                            (:name, :firstname, :birthday, :phone, :dateHiring, :status, :login, :password)
+                            ");
 
         $req->execute(array(
-            'name' =>$worker->getName(),
-            'firstname' =>$worker->getFirstname(),
-            'birthday' => $worker->getBirthday()->format('Y-m-d'),
-            'phone' => $worker->getPhone(),
-            'dateHiring' => $worker->getDateHiring()->format('Y-m-d'),
-            'status' =>$worker->getStatus(),
-            'login' => $worker->getLogin(),
-            'password' => $worker->getPassword()
+            'name' => $name,
+            'firstname' => $firstname,
+            'birthday' => $birthday->format('Y-m-d'),
+            'phone' => $phone,
+            'dateHiring' => $hiringDate->format('Y-m-d'),
+            'status' => $status,
+            'login' => $login,
+            'password' => $password
         ));
     }
 

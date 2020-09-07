@@ -522,6 +522,48 @@ partie navigation
 
 
 
+/*
+////////////////////////////////////////////////////////////////
+////                                                        ////
+////            STYLE Modal CreateWorker                    ////
+////                                                        ////
+////////////////////////////////////////////////////////////////
+ */
+#modal6 h1{
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+/*#modal6 form div{*/
+/*    display: block;*/
+/*    margin: 20px;*/
+/*}*/
+#selectWorkerStatus{
+    display: flex;
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+#selectWorkerStatus:focus{
+    border: 2px solid black;
+}
+#selectWorkerStatus:active{
+    border: 2px solid black;
+}
+#selectWorkerStatus h5{
+    margin-right: 15px;
+}
+#selectWorkerStatusContent{
+    display: flex;
+    flex-direction: column;
+}
+
+#selectWorkerStatus label{
+    margin-left: 10px;
+}
+
 
 
 

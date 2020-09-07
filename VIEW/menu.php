@@ -104,7 +104,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                     <h5>Add a new worker</h5>
                     <p>restricted</p>
                 </div>
-                <a href='modalListJobC&F.php#modal1' class='js-modal round-button' id='buttonListC&FJobs'></a>
+                <a href='modalCreateWorker.php#modal6' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             <div class='navMenu'>
                 <h4>7</h4>

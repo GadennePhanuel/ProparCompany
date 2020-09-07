@@ -42,8 +42,8 @@ foreach ($req as $customer){
 
 
 //sinon on traite la demande et on crée l'employé dans la DT
-//on crée un object Customer //on a besoin de birthday en Datetime
 
+//on a besoin de birthday en Datetime
 $birthdayDate = new DateTime($birthday);
 
 $customer = Factory::getCustomer($name, $firstname, $birthdayDate, $address, $city, $email, $phone);
