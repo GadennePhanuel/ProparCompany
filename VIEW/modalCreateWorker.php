@@ -62,6 +62,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <label for="passwordWorker">Password : </label>
                 <input type="password" id="passwordWorker" name="password" required placeholder="*********">
             </div>
+            <div id="errorWorkerFieldEmpty">   </div>
             <div>
                 <button type="submit" class="btn btn-danger" id="validateNewWorker">VALIDATE</button>
             </div>

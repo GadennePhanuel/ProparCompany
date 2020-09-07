@@ -542,10 +542,7 @@ partie navigation
     margin-bottom: 20px;
     text-decoration: underline;
 }
-/*#modal6 form div{*/
-/*    display: block;*/
-/*    margin: 20px;*/
-/*}*/
+
 #selectWorkerStatus{
     display: flex;
     border: 1px solid rgb(118, 118, 118);
@@ -570,7 +567,11 @@ partie navigation
 #selectWorkerStatus label{
     margin-left: 10px;
 }
-
+#errorWorkerFieldEmpty{
+    font-family: "Kalam", sans-serif;
+    color: #ff0000;
+    margin: 10px 0;
+}
 
 
 
