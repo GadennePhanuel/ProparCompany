@@ -1,3 +1,7 @@
+checkLogMenu()
+
+
+
 $('#validateRevenu').click(function (e){
     e.preventDefault()
 

@@ -1,3 +1,6 @@
+checkLogMenu()
+
+
 //au chargement de la fmodal on génére le tableau par un appel ajax
 $.ajax({
     url: '../CONTROLER/loadWorkerList.action.php',

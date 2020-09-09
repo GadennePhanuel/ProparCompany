@@ -185,7 +185,9 @@ function checkLog(){
         url: '../CONTROLER/checkSession.action.php',
         type: 'POST',
         dataType: 'json',
-
+        data: {
+            'tokenJWT' : localStorage.tokenJWT,
+        },
         success: function (response){
             // response = JSON.parse(response)
             if(response.loginExist == true){
@@ -195,6 +197,8 @@ function checkLog(){
                 $('#linkLogin').attr('href', '#');
                 $('#linkLogin').removeClass('js-modal')
                 $('#linkLogin').text('Log Out');
+            }else if (response.loginExist == false){
+
             }
         },
         error:function(response){
@@ -202,7 +206,33 @@ function checkLog(){
             alert("error");
         }
     })
+}
+function checkLogMenu(){
+    $.ajax({
+        url: '../CONTROLER/checkSession.action.php',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            'tokenJWT' : localStorage.tokenJWT,
+        },
+        success: function (response){
+            // response = JSON.parse(response)
+            if(response.loginExist == true){
+                $('#buttonLogin').removeClass('btn-warning');
+                $('#buttonLogin').addClass('btn-danger');
 
+                $('#linkLogin').attr('href', '#');
+                $('#linkLogin').removeClass('js-modal')
+                $('#linkLogin').text('Log Out');
+            }else if (response.loginExist == false){
+               window.location.href = 'index.php'
+            }
+        },
+        error:function(response){
+            console.log('error');
+            alert("error");
+        }
+    })
 }
 /*
 gestion de l'appel AJAX lors de la demande de connection
@@ -212,7 +242,6 @@ function makeLogIn(){
         e.preventDefault();
         $('#errorLogin').text('');
         $('#errorPassword').text('');
-        console.log($("#login").val()),
 
             $.ajax({
                 url: '../CONTROLER/login.action.php',
@@ -223,19 +252,16 @@ function makeLogIn(){
                     password : $("#password").val()
                 },
                 success: function (response){
+                    console.log(response)
                     // response = $.parseJSON(response)
-                    if (response.validConnection == true){
-                        window.location.replace("menu.php");
-                    }else
-                    if (response.errorLogin != null && response.errorPassword != null){
+                    if (response.errorLogin != null || response.errorPassword != null){
                         $('#errorLogin').text(response.errorLogin);
                         $('#errorPassword').text(response.errorPassword);
-                    }else
-                    if (response.errorLogin == null && response.errorPassword != null){
-                        $('#errorPassword').text(response.errorPassword);
-                    }else
-                    if (response.errorLogin != null && response.errorPassword == null){
-                        $('#errorLogin').text(response.errorLogin);
+                    }else{    // ca veut dire que response est notre token JWT
+                        //on stocke en localstorage notre token
+                        localStorage.setItem('tokenJWT', response)
+                        //on redirige vers le menu
+                        window.location.href = 'menu.php'
                     }
 
                 },
@@ -252,25 +278,10 @@ evenement log Out
  */
 function makeLogOut(){
     $('#linkLogin').click(function (e){
-        $.ajax({
-            url: '../CONTROLER/logout.action.php',
-            type: 'POST',
-            dataType: 'json',
-
-            success: function (response){
-                if (response.loginExist == false){
-                    $('#buttonLogin').removeClass('btn-danger');
-                    $('#buttonLogin').addClass('btn-warning');
-
-                    $('#linkLogin').attr('href', '#modalLogin');
-                    $('#linkLogin').addClass('js-modal')
-                    $('#linkLogin').text('Log In');
-                }
-                if (window.location.href != "http://localhost/ProparCompany/VIEW/index.php" && window.location.href != "http://localhost/www/ProparCompany/VIEW/index.php" ){
-                    window.location.href = 'index.php';
-                }
-            },
-        })
+        localStorage.removeItem('tokenJWT')
+        if (window.location.href != "http://localhost/ProparCompany/VIEW/index.php" && window.location.href != "http://localhost/www/ProparCompany/VIEW/index.php" ){
+            window.location.href = 'index.php';
+        }
     })
 }
 
@@ -280,39 +291,89 @@ function loadYourCurrentJob(){
         url : '../CONTROLER/downloadMyCurrentJobs.action.php',
         type: 'POST',
         dataType: 'json',
+        data : {
+          'tokenJWT' : localStorage.tokenJWT
+        },
         success : function (response){
-            // response = $.parseJSON(response)
-            response.forEach(function (element){
-                $('#yourCurrentJob').append(
-                    "<div class='yourCurrentJobContent'>" +
-                    "<h5>" +
-                    "Job number " + element.id_job + ' of ' + element.date_init +
-                    "</h5>" +
-                    "<p>" +
-                    "Type: " + element.nameJobType +
-                    "</p>" +
-                    "<p>" +
-                    "Starting date: " + element.date_attributed +
-                    "</p>" +
-                    "<p>" +
-                    "Customer: " + element.nameCustomer + ' ' + element.firstnameCustomer +"<br>" + element.address + "<br>" + element.cityCustomer +
-                    "</p>" +
-                    "<p>" +
-                    "Commentary: " + element.commentary +
-                    "</p>" +
-                    "</div>"
-                )
-            })
+            if (response.loginExist == false){
+                window.location.href = 'index.php'
+            }else{
+                $('#welcomeBackContent').text(response.nameWorker + ' ' + response.firstnameWorker)
+                $('#statusWorkerToken').text(response.statusWorker)
 
-            if (response[0] === undefined){
-                $('#yourCurrentJob').append(
-                    "<div class='yourCurrentJobContent'>" +
-                    "<h5>" +
-                    "No work in progress" +
-                    "</h5>" +
-                    "</div>"
-                )
+                console.log(response.statusWorker)
+                if (response.statusWorker == 'expert'){
+                    $('#restrictedMenu').show()
+                    // $('#restrictedMenu').append(
+                    //     "<div class='navMenu'>" +
+                    //         "<h4>5</h4>" +
+                    //         "<div class='subjectMenu'>" +
+                    //             "<h5>Create a new type of job</h5>" +
+                    //             "<p>restricted</p>" +
+                    //         "</div>" +
+                    //         "<a href='modalCreateNewTypeJob.php#modal5' class='js-modal round-button' id='buttonListC&FJobs'></a>" +
+                    //     "</div>" +
+                    // "<div class='navMenu'>" +
+                    //     "<h4>6</h4>" +
+                    //     "<div class='subjectMenu'>" +
+                    //         "<h5>Add a new worker</h5>" +
+                    //        " <p>restricted</p>" +
+                    //     "</div>" +
+                    //     "<a href='modalCreateWorker.php#modal6' class='js-modal round-button' id='buttonListC&FJobs'></a>" +
+                    // "</div>" +
+                    // "<div class='navMenu'>" +
+                    //     "<h4>7</h4>" +
+                    //     "<div class='subjectMenu'>" +
+                    //         "<h5>Worker list</h5>" +
+                    //         "<p>restricted</p>" +
+                    //     "</div>" +
+                    //     "<a href='modalWorkerList.php#modal7' class='js-modal round-button' id='buttonListC&FJobs'></a>" +
+                    // "</div>" +
+                    // "<div class='navMenu'>" +
+                    //     "<h4>8</h4>" +
+                    //     "<div class='subjectMenu'>" +
+                    //         "<h5>Revenue</h5>" +
+                    //         "<p>restricted</p>" +
+                    //     "</div>" +
+                    //     "<a href='modalRevenu.php#modal8' class='js-modal round-button' id='buttonListC&FJobs'></a>" +
+                    // "</div>"
+                    // )
+                }
+
+                response.req.forEach(function (element){
+                    $('#yourCurrentJob').append(
+                        "<div class='yourCurrentJobContent'>" +
+                        "<h5>" +
+                        "Job number " + element.id_job + ' of ' + element.date_init +
+                        "</h5>" +
+                        "<p>" +
+                        "Type: " + element.nameJobType +
+                        "</p>" +
+                        "<p>" +
+                        "Starting date: " + element.date_attributed +
+                        "</p>" +
+                        "<p>" +
+                        "Customer: " + element.nameCustomer + ' ' + element.firstnameCustomer +"<br>" + element.address + "<br>" + element.cityCustomer +
+                        "</p>" +
+                        "<p>" +
+                        "Commentary: " + element.commentary +
+                        "</p>" +
+                        "</div>"
+                    )
+                })
+
+                if (response.req[0] === undefined){
+                    $('#yourCurrentJob').append(
+                        "<div class='yourCurrentJobContent'>" +
+                        "<h5>" +
+                        "No work in progress" +
+                        "</h5>" +
+                        "</div>"
+                    )
+                }
             }
+
+
 
         },
         error:function(response){

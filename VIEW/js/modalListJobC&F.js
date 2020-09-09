@@ -1,4 +1,4 @@
-
+checkLogMenu()
 
 
 $('#divTableEndJob').hide();

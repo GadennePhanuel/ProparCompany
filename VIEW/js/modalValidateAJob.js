@@ -1,3 +1,6 @@
+checkLogMenu()
+
+
 /*
 call ajax créant des div contenant chacune un job en cours perso avec un bouton
  */
@@ -6,46 +9,54 @@ $.ajax({
     url : '../CONTROLER/downloadMyCurrentJobs.action.php',
     type: 'POST',
     dataType: 'json',
+    data: {
+        'tokenJWT' : localStorage.tokenJWT,
+    },
     success : function (response){
         //on recoit les infos, on crée les divs
-        response.forEach(function (element){
-            $('#personalCurrentJob').append(
-                "<div class='personnalCurrentJobContent'>" +
-                "<h5>" +
-                "Job number " + element.id_job + ' of ' + element.date_init +
-                "</h5>" +
-                "<div class='personnalCurrentJobContentText'>"+
-                "<div>" +
-                "<p>" +
-                "Type: " + element.nameJobType +
-                "</p>" +
-                "<p>" +
-                "Starting date: " + element.date_attributed +
-                "</p>" +
-                "<p>" +
-                "Customer: " + element.nameCustomer + ' ' + element.firstnameCustomer +"<br>" + element.address + "<br>" + element.cityCustomer +
-                "</p>" +
-                "<p>" +
-                "Commentary: " + element.commentary +
-                "</p>" +
-                "</div>" +
-                "<div>" +
-                "<button type='button' class='buttonValidateAJob'> Validate this work n°" + "<span>" + element.id_job + "</span>" + "</button>" +
-                "</div>" +
-                "</div>"+
-                "</div>"
-            )
-        })
+            if (response.loginExist == false){
+                window.location.href = 'index.php'
+            }else {
+                response.req.forEach(function (element){
+                    $('#personalCurrentJob').append(
+                        "<div class='personnalCurrentJobContent'>" +
+                        "<h5>" +
+                        "Job number " + element.id_job + ' of ' + element.date_init +
+                        "</h5>" +
+                        "<div class='personnalCurrentJobContentText'>"+
+                        "<div>" +
+                        "<p>" +
+                        "Type: " + element.nameJobType +
+                        "</p>" +
+                        "<p>" +
+                        "Starting date: " + element.date_attributed +
+                        "</p>" +
+                        "<p>" +
+                        "Customer: " + element.nameCustomer + ' ' + element.firstnameCustomer +"<br>" + element.address + "<br>" + element.cityCustomer +
+                        "</p>" +
+                        "<p>" +
+                        "Commentary: " + element.commentary +
+                        "</p>" +
+                        "</div>" +
+                        "<div>" +
+                        "<button type='button' class='buttonValidateAJob'> Validate this work n°" + "<span>" + element.id_job + "</span>" + "</button>" +
+                        "</div>" +
+                        "</div>"+
+                        "</div>"
+                    )
+                })
 
-        if (response[0] === undefined){
-            $('#personalCurrentJob').append(
-                "<div class='personnalCurrentJobContent'>" +
-                "<h5>" +
-                "No work in progress" +
-                "</h5>" +
-                "</div>"
-            )
-        }
+                if (response.req[0] === undefined){
+                    $('#personalCurrentJob').append(
+                        "<div class='personnalCurrentJobContent'>" +
+                        "<h5>" +
+                        "No work in progress" +
+                        "</h5>" +
+                        "</div>"
+                    )
+                }
+            }
+
 
         /*
         on crée maintenant la gestion du click pour valider un job
@@ -63,16 +74,21 @@ $.ajax({
                 type: 'POST',
                 dataType: 'json',
                 data: {
+                    'tokenJWT' : localStorage.tokenJWT,
                     id_job: idJobTarget
                 },
                 success: function (response){
-                    //si la demande de validation revoie false (donc n'a pas été faites, on fait une alert)
-                    if (response.endJob == false){
-                        alert("error process, contact admin please ")
-                    }
-                    //si l'assignation du job a bien été faites renvoi sur la page menu.php pour forcer la fermeture de la fmodal et le rechergement des div YourCurrentJob
-                    if (response.endJob == true){
-                        window.location.href = 'menu.php';
+                    if(response.loginExist == true){
+                        //si la demande de validation revoie false (donc n'a pas été faites, on fait une alert)
+                        if (response.endJob == false){
+                            alert("error process, contact admin please ")
+                        }
+                        //si l'assignation du job a bien été faites renvoi sur la page menu.php pour forcer la fermeture de la fmodal et le rechergement des div YourCurrentJob
+                        if (response.endJob == true){
+                            window.location.href = 'menu.php';
+                        }
+                    }else if (response.loginExist == false){
+                        window.location.href = 'index.php'
                     }
                 },
                 error: function (response){

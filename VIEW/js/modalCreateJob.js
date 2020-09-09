@@ -1,3 +1,7 @@
+checkLogMenu()
+
+
+
 //appel ajax pour remplir le selecteur de client déja existant
 $.ajax({
     url: '../CONTROLER/loadCustomerList.action.php',
@@ -56,6 +60,45 @@ let selectOption = function (){
         $(".formNewCustomer :input").attr("disabled", true)
     }
 }
+
+/*
+CALL AJAX pour générer les options de type de jobs possible par rapport a la Dt
+ */
+$.ajax({
+    url: '../CONTROLER/loadJobsType.action.php',
+    type: 'POST',
+    dataType: 'json',
+    data: {
+
+    },
+    success: function (response){
+        response.forEach(function (element){
+            $('#jobTypeList').append(
+                "<div>" +
+                    "<input type='radio' name='type_job' id='"+ element.name +"' value='"+ element.name +"' checked>" +
+                        "<label for='"+ element.name +"'>" + element.name + ' : ' + element.price + "</label>" +
+                "</div>"
+            )
+        })
+
+
+
+
+    },
+    error: function (response){
+        alert("error")
+        console.log('error')
+    }
+})
+
+
+
+
+
+
+
+
+
 
 
 /*

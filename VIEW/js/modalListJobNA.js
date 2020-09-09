@@ -1,3 +1,7 @@
+checkLogMenu()
+
+
+
 //au chargement de la fmodal on génére le tableau par un appel ajax
 $.ajax({
     url: '../CONTROLER/loadTask.action.php',
@@ -58,6 +62,7 @@ $.ajax({
                 type: 'POST',
                 dataType: 'json',
                 data: {
+                    'tokenJWT' : localStorage.tokenJWT,
                     id_job: idJobTarget
                 },
                 success: function (response){

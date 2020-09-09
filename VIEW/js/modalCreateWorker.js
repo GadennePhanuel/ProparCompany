@@ -1,3 +1,6 @@
+checkLogMenu()
+
+
 /*
 call ajax pour remplir les inputs type radio des options de status possible au sein de la company
  */

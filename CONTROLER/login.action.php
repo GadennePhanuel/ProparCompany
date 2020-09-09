@@ -17,12 +17,10 @@ $req = $req->fetchAll(\PDO::FETCH_ASSOC);       //je récupére un tableau multi
 
 
 //je parcours le tableau
-foreach ($req as $workerAuthentication){
+foreach ($req as $workerAuthentication) {
+    if ($workerAuthentication['login'] == $login && password_verify($password, $workerAuthentication['password']) == true) {
 
-    if ($workerAuthentication['login'] == $login && password_verify($password , $workerAuthentication['password']) == true){
-       //donc ok les logs sont bon, on stocke dans la session le login de l'employé connecté
-        $_SESSION['login'] = $login;
-        //on récupére dans la DT son nom, prénom et status pour les stocker en session également
+        //on récupére dans la DT son nom, prénom et status
         $dbi = Singleton::getInstance()->getConnection();
         $req = $dbi->prepare("SELECT name, firstname, status
                                 FROM workers
@@ -32,19 +30,41 @@ foreach ($req as $workerAuthentication){
             'login' => $login
         ]);
         $req = $req->fetch(\PDO::FETCH_ASSOC);
-        $_SESSION['name'] = $req['name'];
-        $_SESSION['firstname'] = $req['firstname'];
-        $_SESSION['status'] = $req['status'];
 
-        //on revoit un msg en json pour dire que tout s'est bien passé
-        $errorMsg['validConnection'] = true;
+        //create token header as a JSON string
+        $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
+        //create token payload as a JSON string
+        $payload = json_encode([
+            'name' => $req['name'],
+            'firstname' => $req['firstname'],
+            'status' => $req['status'],
+            'login' => $login,
+        ]);
+        //encode header to base64Url string
+        $base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
+        // Encode Payload to Base64Url String
+        $base64UrlPayload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
 
-    }else
-        {          //sinon les logs sont mauvais et on revois un json pour dire que l'un des deux paramétres est faux
-        $errorMsg['errorLogin'] =  "Incorrect or unknown login !";
-        $errorMsg['errorPassword'] = "Wrong password !";
+        // create Signature Hash
+        $signature = hash_hmac('sha256', $base64UrlHeader . "." . $base64UrlPayload, 'cléSecreteDeOuf!', true);
+        //on encode en base 64 notre signature haché
+        $base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
 
+        //on crée enfin notre token JWT (je rappel que chaque partie est séparé des autres pas un 'poin'
+        $jwt = $base64UrlHeader . "." . $base64UrlPayload . "." . $base64UrlSignature;
+
+
+        //on revoit le token à notre view pour qu'il puisse le stocker
+        echo json_encode($jwt);
     }
 }
 
-echo json_encode($errorMsg);
+if (!isset($jwt) || empty($jwt))             //ca veut dire que les logs sont mauvais et qu'aucun token jwt n'a été généré, on donc on renvoi un msg d'erreur
+{
+    $errorMsg['errorLogin'] =  "Incorrect or unknown login !";
+    $errorMsg['errorPassword'] = "Wrong password !";
+    echo json_encode($errorMsg);
+
+}
+
+

@@ -1,13 +1,3 @@
-<?php
-session_start();
-//on empêche l'accès à menu.php si on est pas log
-if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-    header('Location: index.php');
-    exit();
-}
-?>
-
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -62,18 +52,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <div id="jobOptions">
                     <h3>Complete job options : </h3>
                     <div id="jobTypeList">
-                        <div>
-                            <input type="radio" name="type_job" id="big" value="big" checked>
-                            <label for="big">BIG : 10000€</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="type_job" id="medium" value="medium">
-                            <label for="medium">MEDIUM : 2500€</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="type_job" id="little" value="little">
-                            <label for="little">LITTLE : 1000€</label>
-                        </div>
+
                     </div>
                     <textarea name="commentary" id="commentary"  rows="2" placeholder="Commentary..." ></textarea>
                 </div>

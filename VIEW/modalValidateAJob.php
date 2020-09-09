@@ -1,13 +1,3 @@
-<?php
-session_start();
-//on empêche l'accès à menu.php si on est pas log
-if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-    header('Location: index.php');
-    exit();
-}
-?>
-
-
 <!doctype html>
 <html lang="fr">
 <head>

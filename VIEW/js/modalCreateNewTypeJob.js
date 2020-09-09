@@ -1,3 +1,6 @@
+checkLogMenu()
+
+
 /*
 envoie en call ajax des donnée du formulaire pour création du nouveau type de job
  */
@@ -26,7 +29,7 @@ $('#validateNewTypeJob').click(function (e){
                         alert('New type name already exist, error !')
                     }else{
                         alert('New type is registered, thank you')
-                        // window.location.href = 'menu.php'
+                        window.location.href = 'menu.php'
                     }
                 }
             },

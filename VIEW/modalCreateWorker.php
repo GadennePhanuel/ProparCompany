@@ -1,13 +1,3 @@
-<?php
-session_start();
-//on empêche l'accès à menu.php si on est pas log
-if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-    header('Location: index.php');
-    exit();
-}
-?>
-
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -77,7 +67,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
     <script src="js/libs/main.js"></script>
-    <!--    <script src="js/libs/modal.js"></script>-->
+        <script src="js/libs/modal.js"></script>
     <script src="js/modalCreateWorker.js"></script>
 </aside>
 

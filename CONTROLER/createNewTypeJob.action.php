@@ -2,7 +2,6 @@
 require_once '../vendor/autoload.php';
 use ProparCompany\Singleton;
 use ProparCompany\DBManagement;
-session_start();
 
 $nameType = $_POST['nameType'];
 $priceType = $_POST['priceType'];

@@ -1,6 +1,8 @@
 getTime();
 
-checkLog();
+$('#restrictedMenu').hide()
+
+checkLogMenu();
 
 makeLogIn();
 

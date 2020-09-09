@@ -1,12 +1,3 @@
-<?php
-session_start();
-//on empêche l'accès à menu.php si on est pas log
-if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-    header('Location: index.php');
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,9 +31,7 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
     <div class="welcomeBack">
         <h3>Welcome back
             <span id="welcomeBackContent">
-                <?php
-                echo $_SESSION['name'] . ' ' . $_SESSION['firstname'] . '.';
-                ?>
+
             </span>
         </h3>
     </div>
@@ -87,10 +76,8 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
             </div>
             <a href="modalCreateJob.php#modal4" class="js-modal round-button" id="buttonListC&FJobs"></a>
         </div>
-        <?php
-        if ($_SESSION['status'] == 'expert'){
-            echo " 
-                <div class='navMenu'>
+        <div id="restrictedMenu" class="menu" >
+            <div class='navMenu'>
                 <h4>5</h4>
                 <div class='subjectMenu'>
                     <h5>Create a new type of job</h5>
@@ -99,11 +86,11 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <a href='modalCreateNewTypeJob.php#modal5' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             <div class='navMenu'>
-                <h4>6</h4>
-                <div class='subjectMenu'>
+               <h4>6</h4>
+               <div class='subjectMenu'>
                     <h5>Add a new worker</h5>
-                    <p>restricted</p>
-                </div>
+                     <p>restricted</p>
+               </div>
                 <a href='modalCreateWorker.php#modal6' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             <div class='navMenu'>
@@ -115,28 +102,15 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
                 <a href='modalWorkerList.php#modal7' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
             <div class='navMenu'>
-                <h4>8</h4>
-                <div class='subjectMenu'>
+               <h4>8</h4>
+               <div class='subjectMenu'>
                     <h5>Revenue</h5>
                     <p>restricted</p>
-                </div>
+               </div>
                 <a href='modalRevenu.php#modal8' class='js-modal round-button' id='buttonListC&FJobs'></a>
             </div>
-            ";
-        }
-        ?>
-
-
-
+        </div>
     </div>
-
-
-
-
-
-
-
-
 </div>
 
 
@@ -146,8 +120,9 @@ if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script src="js/libs/main.js"></script>
-<script src="js/libs/modal.js"></script>
+<!--<script src="js/libs/modal.js"></script>-->
 <script src="js/menu.js"></script>
+<script src="js/libs/modal.js"></script>
 
 </html>
 
