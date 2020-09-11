@@ -10,8 +10,8 @@ if (isset($dateStart) && !empty($dateStart) && isset($dateEnd) && !empty($dateEn
 
     $dateStart = new DateTime($dateStart);
     $dateEnd = new DateTime($dateEnd);
-    $dateStart = $dateStart->format('d-m-Y');
-    $dateEnd = $dateEnd->format('d-m-Y');
+//    $dateStart = $dateStart->format('d-m-Y');
+//    $dateEnd = $dateEnd->format('d-m-Y');
 
     if ($dateStart > $dateEnd){   //si la date de début inférieur a la date de fin on renvoie un msg d'erreur
         $errorMsg['value'] = false;
@@ -32,7 +32,9 @@ if (isset($dateStart) && !empty($dateStart) && isset($dateEnd) && !empty($dateEn
 
         foreach ($req as $job){
             $date = new DateTime($job['date_init']);
-            $date = $date->format('d-m-Y');
+//            $date = $date->format('d-m-Y');
+
+
             if ($date >= $dateStart && $date <= $dateEnd){
                 $revenu = $revenu + floatval($job['price']);
             }

@@ -8,8 +8,4 @@ use ProparCompany\Singleton;
  $req->execute();
  $req = $req->fetchAll(PDO::FETCH_ASSOC);  //array 2 dimension, sous dimension = un jobType
 
-//echo '<pre>';
-//var_dump($req);
-//echo '</pre>';
-
 echo json_encode($req);
