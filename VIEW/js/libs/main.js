@@ -266,7 +266,8 @@ function makeLogOut(){
                     $('#linkLogin').addClass('js-modal')
                     $('#linkLogin').text('Log In');
                 }
-                if (window.location.href != "http://localhost/ProparCompany/VIEW/index.php" && window.location.href != "http://localhost/www/ProparCompany/VIEW/index.php" ){
+                if (window.location.href != "http://localhost/ProparCompany/VIEW/index.php" && window.location.href != "http://localhost/www/ProparCompany/VIEW/index.php"
+                    && window.location.href != "http://localhost:7080/ProparCompany/VIEW/index.php" && window.location.href != "http://localhost:7080/www/ProparCompany/VIEW/index.php" ){
                     window.location.href = 'index.php';
                 }
             },
